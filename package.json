@@ -1,0 +1,11 @@
+{
+  "name": "fascistometro",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "prototipo": "node prototipo/comparar.mjs"
+  },
+  "dependencies": {
+    "rslp": "1.0.0"
+  }
+}
