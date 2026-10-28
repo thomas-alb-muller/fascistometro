@@ -16,6 +16,7 @@ export const CALIBRAGEM = {
   "06-direitos-humanos": "baixo",
   "07-militarista": "alto",
   "08-receita": "baixo",
+  "09-estado-contra-mercado": "alto", // aprovado pelo usuário como fascista
 };
 // A partir deste índice, o texto conta como "alto"
 export const LINHA = 25;
@@ -105,10 +106,10 @@ L.push("# Avaliação dos jeitos A e B'", "");
 L.push("- **A**: semelhança pelas palavras (radicais e pares de radicais, TF-IDF com cosseno).");
 L.push("- **B'**: semelhança por vetores de palavra do spaCy (`pt_core_news_lg`), com peso SIF. **Não é o modelo de sentido de frase planejado para o B**, que a rede deste ambiente não deixa baixar (`huggingface.co` bloqueado). É um substituto mais fraco.");
 L.push("- Nos dois: a mesma divisão em frases (texto sem pontuação vira blocos de ~30 palavras), a mesma regra de negação, as mesmas exclusões e a mesma conta: índice = 100 × concordâncias ÷ (frases na conta + 2).");
-L.push(`- Cortes de semelhança: escolhidos para cada jeito só com os 8 textos de calibragem. Regra fixada antes de rodar o debate: mais acertos (índice ≥ ${LINHA} quando o esperado é alto, abaixo quando é baixo); no empate, maior margem; depois, o corte mais exigente.`, "");
+L.push(`- Cortes de semelhança: escolhidos para cada jeito só com os ${calibra.length} textos de calibragem. Regra fixada antes de rodar o debate: mais acertos (índice ≥ ${LINHA} quando o esperado é alto, abaixo quando é baixo); no empate, maior margem; depois, o corte mais exigente.`, "");
 
 L.push("## 1. Calibragem", "");
-L.push(`Cortes escolhidos — A: total ${escolha.A.cortes.total}, parcial ${escolha.A.cortes.parcial} (${escolha.A.acertos} de 8 acertos) · B': total ${escolha.B.cortes.total}, parcial ${escolha.B.cortes.parcial} (${escolha.B.acertos} de 8 acertos).`, "");
+L.push(`Cortes escolhidos — A: total ${escolha.A.cortes.total}, parcial ${escolha.A.cortes.parcial} (${escolha.A.acertos} de ${calibra.length} acertos) · B': total ${escolha.B.cortes.total}, parcial ${escolha.B.cortes.parcial} (${escolha.B.acertos} de ${calibra.length} acertos).`, "");
 L.push("| Texto | Esperado | A | B' |", "|---|---|---|---|");
 calibra.forEach((c, i) => L.push(`| ${c.base} | ${CALIBRAGEM[c.base]} | ${escolha.A.indices[i]} | ${escolha.B.indices[i]} |`));
 L.push("");

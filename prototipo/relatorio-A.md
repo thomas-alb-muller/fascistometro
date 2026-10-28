@@ -10,6 +10,7 @@
 | 06-direitos-humanos | 0 |
 | 07-militarista | 0 |
 | 08-receita | 0 |
+| 09-estado-contra-mercado | 0 |
 
 ## 01-doutrina-literal
 
@@ -136,4 +137,13 @@
   - sem correspondência (melhor: 0.00 com T01)
 - "Espere esfriar antes de desenformar."
   - sem correspondência (melhor: 0.08 com T54)
+
+## 09-estado-contra-mercado
+
+**Índice 0** · concordam 0 · frases na conta 2 · discordam 0
+
+- "O Estado não é um mero aparato burocrático, mas sim o principal instrumento de expressão da vontade coletiva e de garantia da dignidade humana."
+  - sem correspondência (melhor: 0.16 com T50)
+- "Em um mundo moldado pelas forças do mercado, onde a lógica do lucro frequentemente se sobrepõe às necessidades das pessoas, a ausência de um poder público forte resulta inevitavelmente no aprofundamento das desigualdades e na exclusão social dos mais vulneráveis."
+  - sem correspondência (melhor: 0.06 com T05)
 
