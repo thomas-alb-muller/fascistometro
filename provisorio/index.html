@@ -156,16 +156,16 @@ footer p { margin: .3rem 0; }
         <li>O texto é dividido em frases. Texto sem pontuação, como transcrição de fala, vira blocos de cerca de 30 palavras.</li>
         <li>Ficam fora da conta: perguntas, trechos entre aspas, relatos ("Mussolini dizia que…") e frases muito curtas. As palavras "fascismo", "fascista", "Mussolini" e "Itália" não contam: valem as ideias, não o nome.</li>
         <li>Cada frase vira um vetor: a média dos vetores das suas palavras, com peso maior para palavras raras. A frase é ligada à frase da Doutrina de vetor mais parecido.</li>
-        <li>Semelhança acima do corte: a frase concorda (total ou em parte). Se só uma das duas tem negação ou rejeição ("não", "nunca", "contra", "rejeitar", "mentira"…), ela discorda.</li>
+        <li>Semelhança acima do corte: a frase concorda (total ou em parte), se tiver o mesmo sinal da frase da Doutrina. Cada frase da Doutrina foi marcada à mão como "afirma" ou "rejeita". No texto, conta a negação ou rejeição ("não", "nunca", "contra", "rejeitar", "mentira"…), com alcance: "não sou contrário" vale a favor, "não há nada" vale uma negação só. Sinais diferentes: a frase discorda.</li>
         <li>Índice = 100 × concordâncias ÷ (frases na conta + 2). O "+2" impede que um texto de uma frase só vá direto ao topo.</li>
       </ol>
       <p id="cortes-texto"></p>
-      <p><b>Limites desta versão.</b> O medidor compara sentido aproximado de palavras, não lê a frase como uma pessoa. Ele confunde texto que nega a Doutrina usando as mesmas palavras (o exemplo "Negação da Doutrina" marca 50), e ironia passa batida. A régua tem 64 frases; a versão completa terá todas as frases de posição da Doutrina.</p>
+      <p><b>Limites desta versão.</b> O medidor compara sentido aproximado de palavras, não lê a frase como uma pessoa. A negação é lida pela forma da frase: quem diz a mesma ideia com a forma contrária ("tudo dentro do Estado" e "nada fora do Estado") pode sair trocado, e ironia passa batida. A régua tem 64 frases; a versão completa terá todas as frases de posição da Doutrina.</p>
     </section>
 
     <section class="bloco" aria-label="A régua">
       <h2>A régua</h2>
-      <p class="meta">64 frases copiadas letra por letra da Doutrina, como estão no texto enviado, agrupadas pelas 4 características definidas por Gentile mais o grupo político.</p>
+      <p class="meta">64 frases copiadas letra por letra da Doutrina, como estão no texto enviado, agrupadas pelas 4 características definidas por Gentile mais o grupo político. Ao lado de cada uma, o sinal marcado à mão: se a frase afirma ou rejeita.</p>
       <div id="regua"></div>
     </section>
   </div>
@@ -264,7 +264,7 @@ function mostrar(r) {
       el("span", "selo-frase " + (x.concorda ? "concorda" : "discorda"), `${x.concorda ? "Concorda" : "Discorda"} · ${x.grau === "total" ? "total" : "em parte"}`),
       el("p", "seu", `“${x.frase}”`),
       el("p", "doutrina", `Doutrina (${GRUPOS[x.tese.grupo]}): “${x.tese.trecho}”`),
-      el("span", "meta", `semelhança ${x.valor.toFixed(2).replace(".", ",")}` + (x.marcas.length || x.tese.marcas.length ? ` · negação no texto: ${x.marcas.join(", ") || "nenhuma"} · na Doutrina: ${x.tese.marcas.join(", ") || "nenhuma"}` : "")),
+      el("span", "meta", `semelhança ${x.valor.toFixed(2).replace(".", ",")} · negação no texto: ${x.marcas.join(", ") || "nenhuma"} · a frase da Doutrina ${x.tese.sinal || (x.tese.negativo ? "rejeita" : "afirma")}`),
     );
     return p;
   }));
@@ -300,7 +300,7 @@ desenharSelo(null, null);
 $("regua").replaceChildren(...Object.entries(GRUPOS).map(([g, nome], i) => {
   const d = el("details"); if (i === 0) d.open = true;
   const lista = el("ul", "regua");
-  for (const t of TESES.filter((t) => String(t.grupo) === g)) { const li = el("li"); li.append(el("span", "id", t.id), t.trecho); lista.append(li); }
+  for (const t of TESES.filter((t) => String(t.grupo) === g)) { const li = el("li"); li.append(el("span", "id", `${t.id} · ${t.sinal}`), t.trecho); lista.append(li); }
   d.append(el("summary", null, `${g}. ${nome} (${lista.children.length})`), lista);
   return d;
 }));

@@ -55,18 +55,54 @@ export function dividirFrases(texto, tamBloco = TAM_BLOCO) {
   return frases;
 }
 
-// Palavras de conteúdo e marcas de negação de uma frase
+// Palavras que, depois de um "não", formam negação dupla ("não sou contrário" = a favor)
+const REJEICAO = /^(anti|contra|contrari[oa]s?|opost[oa]s?|rejeit\w*|repudi\w*|desprez\w*|descart\w*|recus\w*|abomin\w*)$/;
+// Palavras que, depois de um "não", só reforçam a mesma negação ("não há nada")
+const CONCORDANCIA = /^(nada|nunca|ninguem|nenhum|nenhuma|nenhuns|nenhumas|nem|jamais)$/;
+
+// Palavras de conteúdo e marcas de negação de uma frase.
+// O sinal da frase é a conta das negações depois de aplicar o alcance:
+// "não" + rejeição se anulam; "não... nada", "nem... nem" contam uma vez;
+// "nunca antes... como" é afirmação; "sem" não conta. A conta é feita por oração
+// (separada por pontuação ou "mas"); a frase é negativa se alguma oração tiver conta ímpar.
 export function lerPalavras(frase) {
-  const tokens = frase.toLowerCase().match(/\p{L}+/gu) ?? [];
   const conteudo = [];
   const marcas = [];
-  tokens.forEach((t, i) => {
-    const p = semAcento(t);
-    if (NEGATIVAS.test(p) && !(p === "sem" && semAcento(tokens[i + 1] ?? "") === "duvida")) marcas.push(t);
-    if (VAZIAS.has(p) || NOME.test(p) || p.length < 3) return;
-    conteudo.push(t);
+  let negativo = false;
+  // o que vale para a frase inteira: um "não" já visto e o "nunca antes... como"
+  const estado = { houveNao: false, houveNem: false, enfatico: /\bnunca antes\b[\s\S]*\bcomo\b/.test(frase.toLowerCase()) };
+  for (const oracao of frase.toLowerCase().split(/[;,:()—–]|\bmas\b/)) {
+    const r = lerOracao(oracao, estado);
+    conteudo.push(...r.conteudo);
+    marcas.push(...r.marcas);
+    negativo = negativo || r.negacoes % 2 === 1;
+  }
+  return { conteudo, marcas, negativo };
+}
+
+function lerOracao(oracao, estado) {
+  const tokens = oracao.match(/\p{L}+/gu) ?? [];
+  const p = tokens.map(semAcento);
+  const conteudo = [];
+  const marcas = [];
+  const anulada = new Set();
+  let negacoes = 0;
+  p.forEach((w, i) => {
+    if (!VAZIAS.has(w) && !NOME.test(w) && w.length >= 3) conteudo.push(tokens[i]);
+    if (anulada.has(i) || w === "sem" || !NEGATIVAS.test(w)) return;
+    if (w === "nunca" && p[i + 1] === "antes" && estado.enfatico) return;
+    if (w === "nao") {
+      const j = p.slice(i + 1, i + 5).findIndex((x) => REJEICAO.test(x));
+      if (j >= 0) { anulada.add(i + 1 + j); estado.houveNao = true; marcas.push(`${tokens[i]} ${tokens[i + 1 + j]} (= a favor)`); return; }
+      estado.houveNao = true; negacoes++; marcas.push(tokens[i]); return;
+    }
+    if (CONCORDANCIA.test(w)) {
+      if (estado.houveNao || (w === "nem" && estado.houveNem)) return;
+      if (w === "nem") estado.houveNem = true;
+    }
+    negacoes++; marcas.push(tokens[i]);
   });
-  return { conteudo, marcas, negativo: marcas.length > 0 };
+  return { conteudo, marcas, negacoes };
 }
 
 export function criarMotor({ vocab, pesos, escalas, vetores, dim, componente, teses, cortes }) {
@@ -105,7 +141,9 @@ export function criarMotor({ vocab, pesos, escalas, vetores, dim, componente, te
 
   const dasTeses = teses.map((t) => {
     const leitura = lerPalavras(t.trecho.replace(/\[\d+\]/g, ""));
-    return { ...t, ...leitura, vetor: limpar(vetorBruto(leitura.conteudo)) };
+    // o sinal da tese vem da marcação à mão quando existe
+    const negativo = t.sinal ? t.sinal === "rejeita" : leitura.negativo;
+    return { ...t, ...leitura, negativo, vetor: limpar(vetorBruto(leitura.conteudo)) };
   });
 
   function preparar(texto, tamBloco = TAM_BLOCO) {
