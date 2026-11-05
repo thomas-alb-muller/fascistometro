@@ -1,0 +1,318 @@
+<title>Fascistômetro</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;1,8..60,400&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: painel de instrumento — selo à esquerda, leitura à direita; régua e método embaixo, como apêndice de laudo. */
+:root {
+  --fundo: #e9ecea;
+  --papel: #f7f8f6;
+  --tinta: #1c2220;
+  --suave: #58625e;
+  --linha: #c6cdc9;
+  --acento: #2c4766;
+  --concorda: #a3341f;
+  --discorda: #2d6a4f;
+  --marca-concorda: #f3d9d2;
+  --marca-discorda: #d4e8dc;
+  --barra: #a3341f;
+  --display: "Barlow Condensed", "Arial Narrow", "Roboto Condensed", sans-serif;
+  --texto: "Source Serif 4", Georgia, "Times New Roman", serif;
+  --dados: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --fundo: #141816; --papel: #1c211f; --tinta: #e4e9e6; --suave: #9ba59f; --linha: #343c38;
+    --acento: #8eaed6; --concorda: #f08a73; --discorda: #7cc4a0; --marca-concorda: #4a2a22; --marca-discorda: #1f3b2e; --barra: #e0765e;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --fundo: #141816; --papel: #1c211f; --tinta: #e4e9e6; --suave: #9ba59f; --linha: #343c38;
+  --acento: #8eaed6; --concorda: #f08a73; --discorda: #7cc4a0; --marca-concorda: #4a2a22; --marca-discorda: #1f3b2e; --barra: #e0765e;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--fundo); color: var(--tinta); font-family: var(--texto); font-size: 1.0625rem; line-height: 1.55;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 2rem 3rem;
+}
+.pagina { max-width: 68rem; margin: 0 auto; display: grid; gap: 2rem; }
+header { display: grid; gap: .35rem; }
+h1 { font-family: var(--display); font-weight: 800; font-size: clamp(2.4rem, 6vw, 3.6rem); letter-spacing: .02em; line-height: 1; margin: 0; text-transform: uppercase; }
+.sub { margin: 0; color: var(--suave); max-width: 46rem; }
+.etiqueta { font-family: var(--display); font-weight: 700; letter-spacing: .12em; text-transform: uppercase; font-size: .8rem; color: var(--acento); }
+.provisorio { display: inline-block; border: 1px solid var(--acento); color: var(--acento); border-radius: 3px; padding: .05rem .45rem; margin-left: .5rem; vertical-align: middle; }
+h2 { font-family: var(--display); font-weight: 700; text-transform: uppercase; letter-spacing: .06em; font-size: 1.35rem; margin: 0 0 .75rem; text-wrap: balance; }
+h3 { font-family: var(--display); font-weight: 700; letter-spacing: .04em; font-size: 1.05rem; margin: 0 0 .4rem; text-transform: uppercase; }
+.bloco { background: var(--papel); border: 1px solid var(--linha); border-radius: 6px; padding: clamp(1rem, 3vw, 1.75rem); min-width: 0; }
+.entrada { display: grid; gap: .75rem; }
+label[for="texto"] { font-family: var(--display); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .9rem; color: var(--suave); }
+textarea { width: 100%; min-height: 9rem; resize: vertical; font: inherit; font-size: 1rem; color: var(--tinta); background: var(--fundo); border: 1px solid var(--linha); border-radius: 4px; padding: .75rem .85rem; }
+textarea:focus-visible, button:focus-visible, select:focus-visible, summary:focus-visible { outline: 2px solid var(--acento); outline-offset: 2px; }
+.acoes { display: flex; flex-wrap: wrap; gap: .6rem; align-items: center; }
+button.medir { font-family: var(--display); font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-size: 1.05rem; background: var(--tinta); color: var(--papel); border: 0; border-radius: 4px; padding: .55rem 1.4rem; cursor: pointer; }
+button.medir:disabled { opacity: .5; cursor: wait; }
+.exemplos { display: flex; flex-wrap: wrap; gap: .4rem; align-items: center; color: var(--suave); font-size: .9rem; }
+.exemplos button { font: inherit; font-size: .85rem; background: transparent; color: var(--acento); border: 1px solid var(--linha); border-radius: 999px; padding: .15rem .7rem; cursor: pointer; }
+.contador, .estado { font-family: var(--dados); font-size: .8rem; color: var(--suave); }
+.leitura { display: grid; grid-template-columns: minmax(0, 15rem) minmax(0, 1fr); gap: clamp(1rem, 4vw, 2.5rem); align-items: start; }
+@media (max-width: 640px) { .leitura { grid-template-columns: minmax(0, 1fr); } .selo { max-width: 15rem; margin: 0 auto; } }
+.selo svg { width: 100%; height: auto; display: block; }
+.numeros { display: grid; gap: .9rem; min-width: 0; }
+.indice { display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap; }
+.indice strong { font-family: var(--dados); font-weight: 500; font-size: 3rem; line-height: 1; font-variant-numeric: tabular-nums; }
+.indice span { font-family: var(--display); font-weight: 700; font-size: 1.4rem; letter-spacing: .06em; text-transform: uppercase; }
+.contas { margin: 0; color: var(--suave); }
+.contas b { color: var(--tinta); font-weight: 600; }
+.formula { font-family: var(--dados); font-size: .82rem; color: var(--suave); background: var(--fundo); border-radius: 4px; padding: .45rem .6rem; overflow-x: auto; white-space: nowrap; }
+.perfil { display: grid; gap: .45rem; }
+.grupo { display: grid; grid-template-columns: minmax(0, 1fr) 3rem; gap: .25rem .75rem; align-items: center; font-size: .92rem; }
+.grupo .trilho { grid-column: 1 / -1; height: .5rem; background: var(--fundo); border-radius: 2px; overflow: hidden; }
+.grupo .trilho i { display: block; height: 100%; background: var(--barra); }
+.grupo .n { font-family: var(--dados); font-size: .82rem; text-align: right; font-variant-numeric: tabular-nums; color: var(--suave); }
+.aviso { font-size: .92rem; border-left: 3px solid var(--acento); padding: .2rem 0 .2rem .75rem; color: var(--suave); margin: 0; }
+.frases { display: grid; gap: .9rem; }
+.par { display: grid; gap: .35rem; padding-bottom: .9rem; border-bottom: 1px solid var(--linha); }
+.par:last-child { border-bottom: 0; padding-bottom: 0; }
+.par .seu { margin: 0; }
+.par .doutrina { margin: 0; color: var(--suave); font-style: italic; }
+.selo-frase { font-family: var(--display); font-weight: 700; letter-spacing: .08em; text-transform: uppercase; font-size: .8rem; }
+.selo-frase.concorda { color: var(--concorda); }
+.selo-frase.discorda { color: var(--discorda); }
+.meta { font-family: var(--dados); font-size: .78rem; color: var(--suave); }
+.marcado { line-height: 1.8; }
+.marcado mark { color: inherit; padding: .05rem .15rem; border-radius: 2px; }
+.marcado mark.concorda { background: var(--marca-concorda); }
+.marcado mark.discorda { background: var(--marca-discorda); }
+.marcado .fora { color: var(--suave); }
+.legenda { display: flex; flex-wrap: wrap; gap: .75rem; font-size: .85rem; color: var(--suave); margin-top: .5rem; }
+.legenda span::before { content: ""; display: inline-block; width: .8em; height: .8em; border-radius: 2px; margin-right: .35em; vertical-align: -.05em; }
+.legenda .l-c::before { background: var(--marca-concorda); }
+.legenda .l-d::before { background: var(--marca-discorda); }
+.colunas { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: 2rem; }
+.metodo ol { margin: 0; padding-left: 1.2rem; display: grid; gap: .45rem; }
+.metodo p { margin: .75rem 0 0; }
+details { border-top: 1px solid var(--linha); padding-top: .6rem; }
+details + details { margin-top: .6rem; }
+summary { cursor: pointer; font-family: var(--display); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; }
+.regua { margin: .6rem 0 0; padding-left: 0; list-style: none; display: grid; gap: .55rem; font-size: .92rem; }
+.regua .id { font-family: var(--dados); font-size: .75rem; color: var(--acento); margin-right: .35rem; }
+footer { color: var(--suave); font-size: .85rem; max-width: 50rem; }
+footer p { margin: .3rem 0; }
+@media (prefers-reduced-motion: no-preference) { #ponteiro { transition: transform .8s cubic-bezier(.3, 1.4, .5, 1); } }
+</style>
+
+<div class="pagina">
+  <header>
+    <span class="etiqueta">Régua: A Doutrina do Fascismo (Mussolini e Gentile, 1932) <span class="provisorio">versão provisória</span></span>
+    <h1>Fascistômetro</h1>
+    <p class="sub">Cole um texto. Cada frase é comparada com 64 frases copiadas da Doutrina, e o medidor mostra o quanto o texto concorda com ela.</p>
+  </header>
+
+  <section class="bloco entrada" aria-label="Texto para medir">
+    <label for="texto">Texto para medir</label>
+    <textarea id="texto" maxlength="50000" spellcheck="false"></textarea>
+    <div class="acoes">
+      <button class="medir" id="medir" type="button" disabled>Medir</button>
+      <span class="contador" id="contador">0 caracteres</span>
+      <span class="estado" id="estado" role="status">Carregando a tabela de palavras (18 MB)…</span>
+    </div>
+    <div class="exemplos" id="exemplos"><span>Exemplos:</span></div>
+  </section>
+
+  <section class="bloco" aria-label="Resultado">
+    <div class="leitura">
+      <div class="selo" id="selo"></div>
+      <div class="numeros">
+        <div class="indice"><strong id="indice">—</strong><span id="rotulo">aguardando</span></div>
+        <p class="contas" id="contas">O selo aparece quando a tabela termina de carregar.</p>
+        <div class="formula" id="formula">índice = 100 × concordâncias ÷ (frases na conta + 2)</div>
+        <div>
+          <h3>Onde o texto concorda com a Doutrina</h3>
+          <div class="perfil" id="perfil"></div>
+        </div>
+        <p class="aviso">A nota mede o quanto o texto concorda com a Doutrina de 1932. Não é um julgamento sobre quem escreveu.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="bloco" aria-label="Frase a frase">
+    <h2>Frase a frase</h2>
+    <div class="frases" id="frases"><p class="meta">Nenhuma frase medida ainda.</p></div>
+  </section>
+
+  <section class="bloco" aria-label="Texto marcado">
+    <h2>Texto marcado</h2>
+    <div class="marcado" id="marcado"></div>
+    <div class="legenda"><span class="l-c">concorda com a Doutrina</span><span class="l-d">discorda da Doutrina</span><span>cinza: fora da conta</span></div>
+  </section>
+
+  <div class="colunas">
+    <section class="bloco metodo" aria-label="Como funciona">
+      <h2>Como funciona</h2>
+      <ol>
+        <li>O texto é dividido em frases. Texto sem pontuação, como transcrição de fala, vira blocos de cerca de 30 palavras.</li>
+        <li>Ficam fora da conta: perguntas, trechos entre aspas, relatos ("Mussolini dizia que…") e frases muito curtas. As palavras "fascismo", "fascista", "Mussolini" e "Itália" não contam: valem as ideias, não o nome.</li>
+        <li>Cada frase vira um vetor: a média dos vetores das suas palavras, com peso maior para palavras raras. A frase é ligada à frase da Doutrina de vetor mais parecido.</li>
+        <li>Semelhança acima do corte: a frase concorda (total ou em parte). Se só uma das duas tem negação ou rejeição ("não", "nunca", "contra", "rejeitar", "mentira"…), ela discorda.</li>
+        <li>Índice = 100 × concordâncias ÷ (frases na conta + 2). O "+2" impede que um texto de uma frase só vá direto ao topo.</li>
+      </ol>
+      <p id="cortes-texto"></p>
+      <p><b>Limites desta versão.</b> O medidor compara sentido aproximado de palavras, não lê a frase como uma pessoa. Ele confunde texto que nega a Doutrina usando as mesmas palavras (o exemplo "Negação da Doutrina" marca 50), e ironia passa batida. A régua tem 64 frases; a versão completa terá todas as frases de posição da Doutrina.</p>
+    </section>
+
+    <section class="bloco" aria-label="A régua">
+      <h2>A régua</h2>
+      <p class="meta">64 frases copiadas letra por letra da Doutrina, como estão no texto enviado, agrupadas pelas 4 características definidas por Gentile mais o grupo político.</p>
+      <div id="regua"></div>
+    </section>
+  </div>
+
+  <footer>
+    <p>Texto base: "A Doutrina do Fascismo", de Benito Mussolini e Giovanni Gentile, na tradução em português enviada pelo autor do projeto, sem o prefácio do tradutor.</p>
+    <p>Vetores de palavra: spaCy pt_core_news_lg (Explosion fastText Vectors), licença CC BY-SA 4.0, reduzidos às palavras mais frequentes. Tudo roda neste navegador; o texto não é enviado a lugar nenhum.</p>
+  </footer>
+</div>
+
+<script type="module">
+import { carregarDados, criarMotor, GRUPOS, faixaDe } from "./motor.js";
+import { TESES } from "./teses.js";
+
+const EXEMPLOS = [
+  ["Estado contra o mercado", "O Estado não é um mero aparato burocrático, mas sim o principal instrumento de expressão da vontade coletiva e de garantia da dignidade humana. Em um mundo moldado pelas forças do mercado, onde a lógica do lucro frequentemente se sobrepõe às necessidades das pessoas, a ausência de um poder público forte resulta inevitavelmente no aprofundamento das desigualdades e na exclusão social dos mais vulneráveis."],
+  ["Discurso militarista", "Só a guerra revela a coragem verdadeira de um povo. O pacifismo é coisa de covardes que fogem do sacrifício. Uma nação forte precisa expandir suas fronteiras ou será devorada pelas mais fortes. Morrer pela pátria é a maior honra de um homem."],
+  ["Trechos da Doutrina", "Para o Fascismo, o Estado é absoluto, indivíduo e grupos, relativos. Liberdade não é um direito, é um dever. Falando de modo geral, o Fascismo não acredita na possibilidade ou na utilidade da paz perpétua. O Fascismo é difinitiva e absolutamente contrário às doutrinas do liberalismo, tanto na esfera política quanto na econômica. Nunca antes o povo havia clamado por autoridade, direção e ordem, como eles fazem agora."],
+  ["Texto antifascista", "Nenhum governo pode estar acima das pessoas. Cada cidadão tem direitos que o Estado não pode tirar. A democracia, com eleições livres e partidos diversos, é a melhor forma de governo que conhecemos. A guerra não enobrece ninguém; ela destrói vidas. Defendemos a igualdade de todos perante a lei e o direito de discordar."],
+  ["Negação da Doutrina", "O Estado não é absoluto, e o indivíduo vem antes dele. A liberdade é um direito, não um dever. A paz perpétua é possível e útil. Não sou contrário às doutrinas do liberalismo, nem na política nem na economia. O povo não clama por autoridade e ordem."],
+  ["Receita de bolo", "Bata os ovos com o açúcar até formar um creme claro. Junte a farinha peneirada e o leite aos poucos. Coloque a massa numa forma untada e asse em forno médio por quarenta minutos. Espere esfriar antes de desenformar."],
+];
+
+const $ = (id) => document.getElementById(id);
+const el = (tag, cls, texto) => { const e = document.createElement(tag); if (cls) e.className = cls; if (texto != null) e.textContent = texto; return e; };
+const area = $("texto");
+let motor = null;
+
+// ---------- selo ----------
+const CORES = { "verde": "#2e9e4f", "verde-amarela": "#9cbf2b", "amarela": "#f2c12e", "laranja": "#f08a24", "vermelha": "#d6331f", "preta": "#d6331f" };
+function desenharSelo(indice, faixa) {
+  const preto = faixa && faixa.cor === "preta";
+  const lampada = faixa ? CORES[faixa.cor] : "#8a918d";
+  const rotulo = faixa ? faixa.rotulo : "…";
+  const angulo = indice == null ? -62 : -62 + (124 * Math.max(0, Math.min(100, indice))) / 100;
+  const tamanho = rotulo.length > 13 ? 21 : rotulo.length > 10 ? 24 : 27;
+  const marcas = Array.from({ length: 11 }, (_, i) => {
+    const a = ((-62 + i * 12.4) * Math.PI) / 180;
+    const r1 = 74, r2 = i % 5 === 0 ? 63 : 67;
+    return `<line x1="${110 + r1 * Math.sin(a)}" y1="${150 - r1 * Math.cos(a)}" x2="${110 + r2 * Math.sin(a)}" y2="${150 - r2 * Math.cos(a)}" stroke="#2a2f2d" stroke-width="${i % 5 === 0 ? 2 : 1.2}"/>`;
+  }).join("");
+  $("selo").innerHTML = `
+  <svg viewBox="0 0 220 210" role="img" aria-label="Selo do Fascistômetro: ${rotulo}${indice == null ? "" : ", índice " + indice}">
+    <defs>
+      <linearGradient id="moldura" x1="0" y1="0" x2="0" y2="1">
+        <stop offset="0" stop-color="${preto ? "#3a3a3a" : "#d7dbd9"}"/><stop offset=".45" stop-color="${preto ? "#111" : "#9aa09d"}"/><stop offset="1" stop-color="${preto ? "#000" : "#6c726f"}"/>
+      </linearGradient>
+      <linearGradient id="borda" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#ffffff" stop-opacity=".55"/><stop offset="1" stop-color="#000" stop-opacity=".35"/></linearGradient>
+      <linearGradient id="mostrador" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#ffffff"/><stop offset="1" stop-color="#e9ebe6"/></linearGradient>
+      <radialGradient id="brilho"><stop offset="0" stop-color="${lampada}" stop-opacity=".75"/><stop offset="1" stop-color="${lampada}" stop-opacity="0"/></radialGradient>
+      <radialGradient id="lampada" cx=".38" cy=".35" r=".7"><stop offset="0" stop-color="#ffffff" stop-opacity=".85"/><stop offset=".25" stop-color="${lampada}"/><stop offset="1" stop-color="${lampada}" stop-opacity=".95"/></radialGradient>
+    </defs>
+    <rect x="4" y="4" width="212" height="202" rx="22" fill="url(#moldura)"/>
+    <rect x="4" y="4" width="212" height="202" rx="22" fill="none" stroke="url(#borda)" stroke-width="3"/>
+    <path d="M24 152 Q24 30 110 26 Q196 30 196 152 Z" fill="url(#mostrador)" stroke="#5d6360" stroke-width="2"/>
+    ${marcas}
+    <text x="110" y="57" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="800" font-size="${tamanho}" fill="${preto ? "#b3261e" : "#16191a"}" letter-spacing=".5">${rotulo}</text>
+    <text x="110" y="71" text-anchor="middle" font-family="Barlow Condensed, Arial Narrow, sans-serif" font-weight="700" font-size="10" fill="#3c4240" letter-spacing="2.2">FASCISTÔMETRO</text>
+    <g id="ponteiro" style="transform-origin:110px 150px; transform: rotate(${angulo}deg)">
+      <line x1="110" y1="150" x2="110" y2="96" stroke="#121414" stroke-width="2.6" stroke-linecap="round"/>
+      <path d="M110 88 L105 100 L115 100 Z" fill="#121414"/>
+    </g>
+    <circle cx="110" cy="150" r="5" fill="#121414"/>
+    <circle cx="110" cy="180" r="24" fill="url(#brilho)"/>
+    <circle cx="110" cy="180" r="13" fill="url(#lampada)" stroke="#2a2f2d" stroke-width="1.5"/>
+  </svg>`;
+}
+
+// ---------- resultado ----------
+function mostrar(r) {
+  desenharSelo(r.indice, r.faixa);
+  $("indice").textContent = r.indice;
+  $("rotulo").textContent = r.faixa.rotulo;
+  const tocados = Object.values(r.porGrupo).filter((x) => x > 0).length;
+  const fora = r.resultado.filter((x) => x.fora).length;
+  $("contas").innerHTML = "";
+  $("contas").append(
+    el("b", null, String(r.C).replace(".", ",")), " concordâncias em ", el("b", null, String(r.N)), " frases na conta · discorda em ",
+    el("b", null, String(r.discordam)), ` · toca ${tocados} de 5 grupos` + (fora ? ` · ${fora} fora da conta` : ""),
+  );
+  $("formula").textContent = `índice = 100 × ${String(r.C).replace(".", ",")} ÷ (${r.N} + 2) = ${r.indice}`;
+
+  const maior = Math.max(1, ...Object.values(r.porGrupo));
+  $("perfil").replaceChildren(...Object.entries(GRUPOS).map(([g, nome]) => {
+    const linha = el("div", "grupo");
+    const trilho = el("div", "trilho"); const barra = el("i"); barra.style.width = `${(100 * r.porGrupo[g]) / maior}%`; trilho.append(barra);
+    linha.append(el("span", null, nome), el("span", "n", String(r.porGrupo[g]).replace(".", ",")), trilho);
+    return linha;
+  }));
+
+  const pares = r.resultado.filter((x) => x.grau);
+  if (!pares.length) $("frases").replaceChildren(el("p", "meta", "Nenhuma frase ficou parecida o bastante com uma frase da Doutrina."));
+  else $("frases").replaceChildren(...pares.map((x) => {
+    const p = el("div", "par");
+    p.append(
+      el("span", "selo-frase " + (x.concorda ? "concorda" : "discorda"), `${x.concorda ? "Concorda" : "Discorda"} · ${x.grau === "total" ? "total" : "em parte"}`),
+      el("p", "seu", `“${x.frase}”`),
+      el("p", "doutrina", `Doutrina (${GRUPOS[x.tese.grupo]}): “${x.tese.trecho}”`),
+      el("span", "meta", `semelhança ${x.valor.toFixed(2).replace(".", ",")}` + (x.marcas.length || x.tese.marcas.length ? ` · negação no texto: ${x.marcas.join(", ") || "nenhuma"} · na Doutrina: ${x.tese.marcas.join(", ") || "nenhuma"}` : "")),
+    );
+    return p;
+  }));
+
+  $("marcado").replaceChildren(...r.resultado.flatMap((x) => {
+    const cls = x.fora ? "fora" : x.grau ? (x.concorda ? "concorda" : "discorda") : null;
+    const s = cls === "concorda" || cls === "discorda" ? el("mark", cls, x.frase) : el("span", cls, x.frase);
+    if (x.fora) s.title = "fora da conta: " + x.fora;
+    return [s, " "];
+  }));
+}
+
+function medir() {
+  if (!motor) return;
+  const texto = area.value.trim();
+  if (!texto) { $("estado").textContent = "Cole um texto para medir."; return; }
+  mostrar(motor.analisar(texto));
+  $("estado").textContent = "";
+}
+
+// ---------- página ----------
+function contar() { $("contador").textContent = `${area.value.length.toLocaleString("pt-BR")} caracteres`; }
+area.addEventListener("input", contar);
+$("medir").addEventListener("click", medir);
+for (const [nome, texto] of EXEMPLOS) {
+  const b = el("button", null, nome); b.type = "button";
+  b.addEventListener("click", () => { area.value = texto; contar(); medir(); });
+  $("exemplos").append(b);
+}
+area.value = EXEMPLOS[0][1]; contar();
+desenharSelo(null, null);
+
+$("regua").replaceChildren(...Object.entries(GRUPOS).map(([g, nome], i) => {
+  const d = el("details"); if (i === 0) d.open = true;
+  const lista = el("ul", "regua");
+  for (const t of TESES.filter((t) => String(t.grupo) === g)) { const li = el("li"); li.append(el("span", "id", t.id), t.trecho); lista.append(li); }
+  d.append(el("summary", null, `${g}. ${nome} (${lista.children.length})`), lista);
+  return d;
+}));
+
+try {
+  const dados = await carregarDados("dados/");
+  motor = criarMotor({ ...dados, teses: TESES });
+  $("cortes-texto").textContent = `Cortes desta versão, escolhidos com 9 textos de teste: semelhança a partir de ${String(dados.cortes.total).replace(".", ",")} conta como concordância total; a partir de ${String(dados.cortes.parcial).replace(".", ",")}, em parte.`;
+  $("medir").disabled = false;
+  medir();
+} catch (erro) {
+  $("estado").textContent = "Não foi possível carregar a tabela de palavras. Recarregue a página.";
+  console.error(erro);
+}
+</script>
