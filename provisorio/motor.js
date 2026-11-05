@@ -5,6 +5,9 @@
 // negação ou rejeição: aí discorda. Nota = 100 × concordâncias ÷ (frases na conta + 2).
 
 export const TAM_BLOCO = 30;
+// Quanto soma à semelhança quando a frase fala do alvo da tese (ex.: "pacifismo").
+// Testado com 0,1: piorou a calibragem (8 de 9 acertos, Direitos Humanos foi a 29). Desligado.
+export const BONUS_ALVO = 0;
 const MAX_FRASE = 45;
 
 const VAZIAS = new Set(`de a o que e do da em um para com nao uma os no se na por mais as dos como mas ao ele das seu sua ou quando muito nos ja eu tambem so pelo pela ate isso ela entre depois sem mesmo aos seus quem nas me esse eles voce essa num nem suas meu minha numa pelos elas qual lhe deles essas esses pelas este dele tu te voces vos lhes meus minhas teu tua teus tuas nosso nossa nossos nossas dela delas esta estes estas aquele aquela aqueles aquelas isto aquilo estou estamos estao estive esteve estivemos estiveram estava estavamos estavam estivera estiveramos esteja estejamos estejam estivesse estivessemos estivessem estiver estivermos estiverem hei ha havemos hao houve houvemos houveram houvera houveramos haja hajamos hajam houvesse houvessemos houvessem houver houvermos houverem houverei houveremos houverao houveria houveriamos houveriam sou somos sao era eramos eram fui foi fomos foram fora foramos seja sejamos sejam fosse fossemos fossem for formos forem serei sera seremos serao seria seriamos seriam tenho tem temos tinha tinhamos tinham tive teve tivemos tiveram tivera tiveramos tenha tenhamos tenham tivesse tivessemos tivessem tiver tivermos tiverem terei tera teremos terao teria teriamos teriam ser ter todo toda todos todas cada outro outra outros outras tal tais assim pois porque sobre ainda apenas onde vez eh ne ta ah`.split(/\s+/));
@@ -68,6 +71,7 @@ const CONCORDANCIA = /^(nada|nunca|ninguem|nenhum|nenhuma|nenhuns|nenhumas|nem|j
 export function lerPalavras(frase) {
   const conteudo = [];
   const marcas = [];
+  const oracoes = [];
   let negativo = false;
   // o que vale para a frase inteira: um "não" já visto e o "nunca antes... como"
   const estado = { houveNao: false, houveNem: false, enfatico: /\bnunca antes\b[\s\S]*\bcomo\b/.test(frase.toLowerCase()) };
@@ -75,9 +79,34 @@ export function lerPalavras(frase) {
     const r = lerOracao(oracao, estado);
     conteudo.push(...r.conteudo);
     marcas.push(...r.marcas);
+    oracoes.push(r);
     negativo = negativo || r.negacoes % 2 === 1;
   }
-  return { conteudo, marcas, negativo };
+  return { conteudo, marcas, negativo, oracoes };
+}
+
+// Palavras de negação gramatical: só alcançam o que vem logo depois delas
+const GRAMATICAL = /^(nao|nunca|jamais|nem|nenhum|nenhuma|nenhuns|nenhumas|ninguem|nada)$/;
+
+// Atitude da frase sobre o alvo da tese. Uma negação gramatical ("não", "nunca"...) só conta
+// se vier antes do alvo, na mesma oração; rejeição ou juízo negativo
+// ("rejeito", "contra", "mentira"...) conta em toda a oração. Sem o alvo na frase: achou = false.
+export function atitudeSobre(leitura, alvo) {
+  const prefixos = (alvo ?? []).map((a) => { const w = semAcento(a.toLowerCase()).split(/[^a-z]+/)[0]; return w.slice(0, Math.min(5, w.length)); });
+  let achou = false, negativo = false;
+  const marcas = new Set();
+  const palavras = new Set();
+  for (const o of leitura.oracoes ?? []) {
+    o.p.forEach((w, i) => {
+      if (!prefixos.some((pre) => w.startsWith(pre))) return;
+      achou = true;
+      palavras.add(o.tokens[i]);
+      const valem = o.negs.filter((n) => (GRAMATICAL.test(n.p) ? n.pos < i : true));
+      valem.forEach((n) => marcas.add(n.palavra));
+      if (valem.length % 2 === 1) negativo = true;
+    });
+  }
+  return { achou, negativo, marcas: [...marcas], palavras: [...palavras] };
 }
 
 function lerOracao(oracao, estado) {
@@ -86,6 +115,7 @@ function lerOracao(oracao, estado) {
   const conteudo = [];
   const marcas = [];
   const anulada = new Set();
+  const negs = [];
   let negacoes = 0;
   p.forEach((w, i) => {
     if (!VAZIAS.has(w) && !NOME.test(w) && w.length >= 3) conteudo.push(tokens[i]);
@@ -94,15 +124,15 @@ function lerOracao(oracao, estado) {
     if (w === "nao") {
       const j = p.slice(i + 1, i + 5).findIndex((x) => REJEICAO.test(x));
       if (j >= 0) { anulada.add(i + 1 + j); estado.houveNao = true; marcas.push(`${tokens[i]} ${tokens[i + 1 + j]} (= a favor)`); return; }
-      estado.houveNao = true; negacoes++; marcas.push(tokens[i]); return;
+      estado.houveNao = true; negacoes++; marcas.push(tokens[i]); negs.push({ pos: i, p: w, palavra: tokens[i] }); return;
     }
     if (CONCORDANCIA.test(w)) {
       if (estado.houveNao || (w === "nem" && estado.houveNem)) return;
       if (w === "nem") estado.houveNem = true;
     }
-    negacoes++; marcas.push(tokens[i]);
+    negacoes++; marcas.push(tokens[i]); negs.push({ pos: i, p: w, palavra: tokens[i] });
   });
-  return { conteudo, marcas, negacoes };
+  return { conteudo, marcas, negacoes, p, tokens, negs };
 }
 
 export function criarMotor({ vocab, pesos, escalas, vetores, dim, componente, teses, cortes }) {
@@ -164,7 +194,13 @@ export function criarMotor({ vocab, pesos, escalas, vetores, dim, componente, te
     if (!v) return [];
     return dasTeses
       .filter((t) => t.vetor)
-      .map((t) => { let s = 0; for (let k = 0; k < dim; k++) s += v[k] * t.vetor[k]; return { tese: t, valor: s }; })
+      .map((t) => {
+        let s = 0;
+        for (let k = 0; k < dim; k++) s += v[k] * t.vetor[k];
+        // a frase que fala do alvo da tese ganha preferência por ela
+        const alvo = atitudeSobre(item.leitura, t.alvo);
+        return { tese: t, cosseno: s, alvo: alvo.achou ? alvo.palavras : [], valor: s + (alvo.achou ? BONUS_ALVO : 0) };
+      })
       .sort((a, b) => b.valor - a.valor);
   }
 
@@ -179,9 +215,12 @@ export function criarMotor({ vocab, pesos, escalas, vetores, dim, componente, te
       const valor = melhor ? melhor.valor : 0;
       const grau = valor >= c.total ? "total" : valor >= c.parcial ? "parcial" : null;
       if (!grau) return { frase: item.frase, valor, tese: melhor?.tese, vizinhas: item.rank.slice(0, 3) };
-      const concorda = item.leitura.negativo === melhor.tese.negativo;
+      // sinal do texto: atitude sobre o alvo da tese; sem o alvo na frase, a negação da frase toda
+      const at = atitudeSobre(item.leitura, melhor.tese.alvo);
+      const negativo = at.achou ? at.negativo : item.leitura.negativo;
+      const concorda = negativo === melhor.tese.negativo;
       if (concorda) { const p = grau === "total" ? 1 : 0.5; C += p; porGrupo[melhor.tese.grupo] += p; } else discordam++;
-      return { frase: item.frase, valor, grau, concorda, tese: melhor.tese, marcas: item.leitura.marcas, vizinhas: item.rank.slice(0, 3) };
+      return { frase: item.frase, valor, cosseno: melhor.cosseno, palavrasAlvo: melhor.alvo, grau, concorda, tese: melhor.tese, marcas: at.achou ? at.marcas : item.leitura.marcas, alvoNaFrase: at.achou, vizinhas: item.rank.slice(0, 3) };
     });
     const indice = Math.round((100 * C) / (N + 2));
     return { indice, faixa: faixaDe(indice), C, N, discordam, porGrupo, resultado };

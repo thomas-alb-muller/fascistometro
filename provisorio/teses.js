@@ -1,6 +1,7 @@
 // Régua provisória: 64 frases copiadas letra por letra de "A Doutrina do Fascismo" (texto enviado pelo usuário).
 // grupo: 1 Estado totalitário e ético; 2 Anti-individualismo e anti-marxismo; 3 Pensamento e ação;
 // 4 Nação espiritual e homem novo; 5 Doutrina política (guerra, expansão, contra o voto e a igualdade).
+// alvo: as palavras sobre as quais a tese se posiciona (a negação do texto só conta se cair sobre elas).
 // sinal: a posição principal da frase, marcada à mão — afirma ou rejeita.
 export const TESES = [
  {
@@ -8,6 +9,11 @@ export const TESES = [
   "secao": "Visão espiritualista de vida",
   "grupo": 3,
   "sinal": "afirma",
+  "alvo": [
+   "sacrifício",
+   "renúncia",
+   "morte"
+  ],
   "trecho": "Uma vida na qual o indivíduo, através de auto-sacrifício, da renúncia de interesses pessoais e da própria morte pode atingir a existência puramente espiritual na qual seu valor como homem reside."
  },
  {
@@ -15,6 +21,10 @@ export const TESES = [
   "secao": "Visão espiritualista de vida",
   "grupo": 4,
   "sinal": "afirma",
+  "alvo": [
+   "espiritualista",
+   "espiritual"
+  ],
   "trecho": "Esta concepção é, portanto, espiritualista, que nasce da reação geral deste século contra o materialismo positivista do século 19."
  },
  {
@@ -22,6 +32,10 @@ export const TESES = [
   "secao": "Visão espiritualista de vida",
   "grupo": 3,
   "sinal": "afirma",
+  "alvo": [
+   "ativo",
+   "energias"
+  ],
   "trecho": "O Fascismo deseja que o homem seja ativo e aja com todas as suas energias; quer que o homem seja virilmente consciente das dificuldades que o atormentam e que esteja pronto para enfrentá-las."
  },
  {
@@ -29,6 +43,11 @@ export const TESES = [
   "secao": "Visão espiritualista de vida",
   "grupo": 3,
   "sinal": "afirma",
+  "alvo": [
+   "desafio",
+   "vencer",
+   "conquistar"
+  ],
   "trecho": "Entende-se a vida como um desafio no qual é papel do homem conquistar para si mesmo um lugar de respeito, em primeiro lugar preparando-se (fisicamente, moralmente, intelectualmente) para adquirir o necessário para vencer."
  },
  {
@@ -36,6 +55,11 @@ export const TESES = [
   "secao": "Visão espiritualista de vida",
   "grupo": 4,
   "sinal": "afirma",
+  "alvo": [
+   "séria",
+   "austera",
+   "religiosa"
+  ],
   "trecho": "Assim a vida, como concebida pelos fascistas, é séria, austera e religiosa; todas as suas manifestações encontram-se em um mundo mantido por forças morais e são sujeitas a responsabilidades espirituais."
  },
  {
@@ -43,6 +67,9 @@ export const TESES = [
   "secao": "Visão espiritualista de vida",
   "grupo": 3,
   "sinal": "rejeita",
+  "alvo": [
+   "fácil"
+  ],
   "trecho": "O Fascista desdenha a vida fácil[6]."
  },
  {
@@ -50,6 +77,10 @@ export const TESES = [
   "secao": "Visão espiritualista de vida",
   "grupo": 4,
   "sinal": "afirma",
+  "alvo": [
+   "religioso",
+   "religião"
+  ],
   "trecho": "O conceito Fascista de vida é religioso[7], no qual o homem é visto em sua relação inerente a leis superiores, dando a ele uma visão objetiva que transcende o indivíduo e o eleva à consciência unida de uma sociedade espiritual."
  },
  {
@@ -57,6 +88,9 @@ export const TESES = [
   "secao": "A importância da tradição",
   "grupo": 4,
   "sinal": "afirma",
+  "alvo": [
+   "tradição"
+  ],
   "trecho": "Isso explica o grande valor da tradição em memórias, em linguagens, em tradições, nas regras da vida social[8]."
  },
  {
@@ -64,6 +98,9 @@ export const TESES = [
   "secao": "A importância da tradição",
   "grupo": 4,
   "sinal": "rejeita",
+  "alvo": [
+   "fora"
+  ],
   "trecho": "Fora da história o homem não existe."
  },
  {
@@ -71,6 +108,12 @@ export const TESES = [
   "secao": "A rejeição do individualismo e a importância do Estado",
   "grupo": 2,
   "sinal": "rejeita",
+  "alvo": [
+   "individualistas",
+   "abstrações",
+   "utopias",
+   "jacobinistas"
+  ],
   "trecho": "Fascismo é, portanto, oposto a todas as abstrações individualistas baseadas no materialismo do século 18; e é oposto a todas as utopias e inovações Jacobinistas."
  },
  {
@@ -78,6 +121,9 @@ export const TESES = [
   "secao": "A rejeição do individualismo e a importância do Estado",
   "grupo": 2,
   "sinal": "rejeita",
+  "alvo": [
+   "individual"
+  ],
   "trecho": "Por ser anti-individualista, a concepção Fascista da vida espressa a importância do Estado e aceita o individual apenas enquanto os interesses deste coincidam com os interesses do Estado, que defende a consciente e universal vontade do homem enquanto entidade histórica[11]."
  },
  {
@@ -85,6 +131,10 @@ export const TESES = [
   "secao": "A rejeição do individualismo e a importância do Estado",
   "grupo": 2,
   "sinal": "afirma",
+  "alvo": [
+   "estado",
+   "direitos"
+  ],
   "trecho": "O liberalismo negou o Estado em prol do indivíduo; O Fascismo reasserta os direitos do Estado como expressão da real essência do indivíduo[12]."
  },
  {
@@ -92,6 +142,10 @@ export const TESES = [
   "secao": "A rejeição do individualismo e a importância do Estado",
   "grupo": 1,
   "sinal": "afirma",
+  "alvo": [
+   "estado",
+   "tudo"
+  ],
   "trecho": "O conceito Fascista de Estado abraça a tudo; fora deste conceito nenhum humano ou valores espirituais podem existir, muito menos ter valor."
  },
  {
@@ -99,6 +153,9 @@ export const TESES = [
   "secao": "A rejeição do individualismo e a importância do Estado",
   "grupo": 1,
   "sinal": "afirma",
+  "alvo": [
+   "totalitário"
+  ],
   "trecho": "Assim entendido, o Fascismo é totalitário e o Estado Fascista – uma síntese e unidade de todos os valores – interpreta, desenvolve e potencializa toda a vida de um povo[14]."
  },
  {
@@ -106,6 +163,9 @@ export const TESES = [
   "secao": "A rejeição do individualismo e a importância do Estado",
   "grupo": 1,
   "sinal": "rejeita",
+  "alvo": [
+   "fora"
+  ],
   "trecho": "Nenhum indivíduo ou grupos (partidos políticos, assossiações culturais, sindicatos, classes sociais) deve existir fora do Estado[15]."
  },
  {
@@ -113,6 +173,10 @@ export const TESES = [
   "secao": "A rejeição do individualismo e a importância do Estado",
   "grupo": 2,
   "sinal": "rejeita",
+  "alvo": [
+   "socialismo",
+   "classes"
+  ],
   "trecho": "O Fascismo é, portanto, oposto ao Socialismo para o qual a unidade dentro do Estado (que amalgama classes em uma única realidade econômica e social) é desconhecida, e que vê na história nada além da luta de classes."
  },
  {
@@ -120,6 +184,9 @@ export const TESES = [
   "secao": "A rejeição do individualismo e a importância do Estado",
   "grupo": 2,
   "sinal": "rejeita",
+  "alvo": [
+   "sindicalismo"
+  ],
   "trecho": "O Fascismo é oposto, da mesma maneira, ao sindicalismo como uma arma de classes."
  },
  {
@@ -127,6 +194,10 @@ export const TESES = [
   "secao": "A rejeição do individualismo e a importância do Estado",
   "grupo": 4,
   "sinal": "afirma",
+  "alvo": [
+   "estado",
+   "nação"
+  ],
   "trecho": "Ao invés disso, é o Estado que cria a nação, conferindo vontade e portanto verdadeira vida a um povo tornado consciente de sua união moral."
  },
  {
@@ -134,6 +205,9 @@ export const TESES = [
   "secao": "A rejeição do individualismo e a importância do Estado",
   "grupo": 3,
   "sinal": "afirma",
+  "alvo": [
+   "inatividade"
+  ],
   "trecho": "Inatividade é morte."
  },
  {
@@ -141,6 +215,10 @@ export const TESES = [
   "secao": "A rejeição do individualismo e a importância do Estado",
   "grupo": 5,
   "sinal": "afirma",
+  "alvo": [
+   "expansão",
+   "organização"
+  ],
   "trecho": "Isso implica organização e expansão, potencial, senão efetiva."
  },
  {
@@ -148,6 +226,10 @@ export const TESES = [
   "secao": "A rejeição do individualismo e a importância do Estado",
   "grupo": 1,
   "sinal": "afirma",
+  "alvo": [
+   "disciplina",
+   "conduta"
+  ],
   "trecho": "O Estado Fascista é um padrão internamente aceito e uma regra de conduta, uma disciplina integral para a pessoa; ele permeia a vontade e também o intelecto."
  },
  {
@@ -155,6 +237,10 @@ export const TESES = [
   "secao": "A rejeição do individualismo e a importância do Estado",
   "grupo": 4,
   "sinal": "afirma",
+  "alvo": [
+   "remodelar",
+   "caráter"
+  ],
   "trecho": "Ele visa remodelar não apenas as formas de vida, mas também seu conteudo, o homem, seu caráter e sua fé."
  },
  {
@@ -162,6 +248,11 @@ export const TESES = [
   "secao": "A rejeição do individualismo e a importância do Estado",
   "grupo": 1,
   "sinal": "afirma",
+  "alvo": [
+   "disciplina",
+   "autoridade",
+   "alma"
+  ],
   "trecho": "Para chegar a este propósito, ele aplica a disciplina e usa a autoridade, entrando na alma e governando com incontestável domínio."
  },
  {
@@ -169,6 +260,10 @@ export const TESES = [
   "secao": "Rejeição ao pacifismo",
   "grupo": 5,
   "sinal": "rejeita",
+  "alvo": [
+   "paz",
+   "perpétua"
+  ],
   "trecho": "Falando de modo geral, o Fascismo não acredita na possibilidade ou na utilidade da paz perpétua."
  },
  {
@@ -176,6 +271,9 @@ export const TESES = [
   "secao": "Rejeição ao pacifismo",
   "grupo": 5,
   "sinal": "rejeita",
+  "alvo": [
+   "pacifismo"
+  ],
   "trecho": "Ele então descarta o pacifismo como uma máscara para uma renúncia insolente e covarde em contradição com o auto-sacrifício."
  },
  {
@@ -183,6 +281,9 @@ export const TESES = [
   "secao": "Rejeição ao pacifismo",
   "grupo": 5,
   "sinal": "afirma",
+  "alvo": [
+   "guerra"
+  ],
   "trecho": "Apenas a guerra canaliza todas as energias humanas para a sua máxima tensão e perpetua o selo da nobreza naqueles povos que têm a coragem de enfrenta-la."
  },
  {
@@ -190,6 +291,9 @@ export const TESES = [
   "secao": "Rejeição ao pacifismo",
   "grupo": 5,
   "sinal": "rejeita",
+  "alvo": [
+   "paz"
+  ],
   "trecho": "Portanto, todas as doutrinas que postulam a paz a qualquer custo são incompatíveis com o Fascismo."
  },
  {
@@ -197,6 +301,10 @@ export const TESES = [
   "secao": "Rejeição ao pacifismo",
   "grupo": 3,
   "sinal": "afirma",
+  "alvo": [
+   "dever",
+   "conquista"
+  ],
   "trecho": "A vida, como ele entende, significa dever, elevação, conquista; a vida deve ser sublime e completa, ela deve ser vivida para si, mas acima de tudo, para os outros, tanto de perto quanto de muito longe, presente e futuro."
  },
  {
@@ -204,6 +312,10 @@ export const TESES = [
   "secao": "Rejeição ao pacifismo",
   "grupo": 5,
   "sinal": "afirma",
+  "alvo": [
+   "hierarquia",
+   "diferenciação"
+  ],
   "trecho": "O amor que se tem pelo vizinho não exclui a necessidade da severidade educacional; ainda menos ele exclui a necessidade de diferenciação e hierarquia."
  },
  {
@@ -211,6 +323,10 @@ export const TESES = [
   "secao": "Rejeição ao marxismo",
   "grupo": 4,
   "sinal": "afirma",
+  "alvo": [
+   "santidade",
+   "heroísmo"
+  ],
   "trecho": "O Fascismo acredita, agora e sempre, na santidade e no heroísmo, isso é, em atos nos quais nenhuma motivação econômica – remota ou imediata – existe."
  },
  {
@@ -218,6 +334,10 @@ export const TESES = [
   "secao": "Rejeição ao marxismo",
   "grupo": 2,
   "sinal": "rejeita",
+  "alvo": [
+   "bem-estar",
+   "felicidade"
+  ],
   "trecho": "Isso significa que o Fascismo nega a equação: bem-estar = felicidade, que vê os homens como meros animais, contentes em serem alimentados e engordados, então os reduzindo a uma pura e simples existência vegetativa."
  },
  {
@@ -225,6 +345,14 @@ export const TESES = [
   "secao": "Rejeição da democracia parlamentarista",
   "grupo": 5,
   "sinal": "rejeita",
+  "alvo": [
+   "números",
+   "sufrágio",
+   "consultas",
+   "voto",
+   "eleições",
+   "maioria"
+  ],
   "trecho": "O Fascismo nega que números, como tais, possam ser um fator determinante na sociedade humana; ele nega o direito dos números governarem por meio de consultas periódicas; ele afirma a irremediável, fértil e beneficiente diferença entre os homens, que não pode ser nivelada por nenhum aparato mecânico e extrínseco como o sufrágio universal."
  },
  {
@@ -232,6 +360,11 @@ export const TESES = [
   "secao": "Rejeição da democracia parlamentarista",
   "grupo": 5,
   "sinal": "rejeita",
+  "alvo": [
+   "democráticos",
+   "democracia",
+   "soberania"
+  ],
   "trecho": "Regimes democráticos podem ser descritos como aqueles que, de tempo em tempo, o povo é iludido a crer que eles exercem a soberania, enquanto que o tempo todo a verdadeira soberanía reside em e é exercida por outros e, algumas vezes, por forças secretas e irresponsáveis."
  },
  {
@@ -239,6 +372,9 @@ export const TESES = [
   "secao": "Rejeição da democracia parlamentarista",
   "grupo": 5,
   "sinal": "rejeita",
+  "alvo": [
+   "democracia"
+  ],
   "trecho": "A democracia é um regime sem-Reis infestado por muitos reis que algumas vezes são mais exclusivos, tiranos e destrutivos que um, mesmo se este fosse um tirano."
  },
  {
@@ -246,6 +382,10 @@ export const TESES = [
   "secao": "Rejeição ao igualitarismo",
   "grupo": 5,
   "sinal": "rejeita",
+  "alvo": [
+   "igualitarismo",
+   "igualdade"
+  ],
   "trecho": "Em rejeitar a democracia, o Fascismo rejeita a absurda mentira convencional do igualitarismo político, o hábito da irresponsabilidade coletiva, o mito de felicidade e do progresso indefinidos."
  },
  {
@@ -253,6 +393,10 @@ export const TESES = [
   "secao": "Definição de fascismo como verdadeira democracia",
   "grupo": 5,
   "sinal": "afirma",
+  "alvo": [
+   "autoritária",
+   "centralizada"
+  ],
   "trecho": "Mas se a democracia for entendida como um regime em que as massas não são empurradas de volta para as margens do Estado, então o autor dessas páginas já definiu o Fascismo como uma democracia organizada, centralizada e autoritária."
  },
  {
@@ -260,6 +404,9 @@ export const TESES = [
   "secao": "Rejeição do liberalismo econômico",
   "grupo": 2,
   "sinal": "rejeita",
+  "alvo": [
+   "liberalismo"
+  ],
   "trecho": "O Fascismo é difinitiva e absolutamente contrário às doutrinas do liberalismo, tanto na esfera política quanto na econômica."
  },
  {
@@ -267,6 +414,10 @@ export const TESES = [
   "secao": "Rejeição do liberalismo econômico",
   "grupo": 2,
   "sinal": "rejeita",
+  "alvo": [
+   "liberalismo",
+   "liberais"
+  ],
   "trecho": "Isso explica o porque dos experimentos políticos dos nossos dias serem anti-liberais, e é extremamente ridículo se empenhar neste motivo para colocá-los fora dos limites da história, como se a história fosse especialmente para conservar o liberalismo e seus adeptos; como se o liberalismo fosse a última palavra da civilização, para além da qual ninguém poderia ir."
  },
  {
@@ -274,6 +425,10 @@ export const TESES = [
   "secao": "A visão totalitária fascista do futuro",
   "grupo": 1,
   "sinal": "afirma",
+  "alvo": [
+   "autoridade",
+   "direita"
+  ],
   "trecho": "Nós estamos livres para acreditar que este é o século da autoridade, um século que tende para a “direita”, um século Fascista."
  },
  {
@@ -281,6 +436,11 @@ export const TESES = [
   "secao": "A visão totalitária fascista do futuro",
   "grupo": 3,
   "sinal": "afirma",
+  "alvo": [
+   "poder",
+   "violência",
+   "vontade"
+  ],
   "trecho": "Daí o esforço pragmático do Fascismo, sua vontade de poder, sua vontade de viver, sua atitude para a violência, e o seu valor."
  },
  {
@@ -288,6 +448,10 @@ export const TESES = [
   "secao": "A absoluta primazia do Estado",
   "grupo": 1,
   "sinal": "afirma",
+  "alvo": [
+   "estado",
+   "absoluto"
+  ],
   "trecho": "Para o Fascismo, o Estado é absoluto, indivíduo e grupos, relativos."
  },
  {
@@ -295,6 +459,10 @@ export const TESES = [
   "secao": "A absoluta primazia do Estado",
   "grupo": 1,
   "sinal": "afirma",
+  "alvo": [
+   "estado",
+   "dentro"
+  ],
   "trecho": "Indivíduos e grupos são admitidos somente enquanto eles estejam dentro do Estado."
  },
  {
@@ -302,6 +470,10 @@ export const TESES = [
   "secao": "A absoluta primazia do Estado",
   "grupo": 1,
   "sinal": "afirma",
+  "alvo": [
+   "estado",
+   "respeito"
+  ],
   "trecho": "Em qualquer momento que o respeito pelo Estado declina e as tendências desintegradoras e centrifugas de indivíduos e grupos prevalecem, as nações rumam ao declínio."
  },
  {
@@ -309,6 +481,10 @@ export const TESES = [
   "secao": "A absoluta primazia do Estado",
   "grupo": 2,
   "sinal": "afirma",
+  "alvo": [
+   "estado",
+   "crise"
+  ],
   "trecho": "A tão dita crise pode ser resolvida apenas pela ação do Estado e dentro da órbita do Estado."
  },
  {
@@ -316,6 +492,10 @@ export const TESES = [
   "secao": "A absoluta primazia do Estado",
   "grupo": 2,
   "sinal": "rejeita",
+  "alvo": [
+   "liberalismo",
+   "individualismo"
+  ],
   "trecho": "Se liberalismo significa individualismo, Fascismo significa governo."
  },
  {
@@ -323,6 +503,10 @@ export const TESES = [
   "secao": "A absoluta primazia do Estado",
   "grupo": 1,
   "sinal": "afirma",
+  "alvo": [
+   "estado",
+   "forte"
+  ],
   "trecho": "O Fascismo deseja que o Estado seja forte e orgânico, baseado nas amplas fundações do apoio popular."
  },
  {
@@ -330,6 +514,9 @@ export const TESES = [
   "secao": "A absoluta primazia do Estado",
   "grupo": 2,
   "sinal": "afirma",
+  "alvo": [
+   "limitou"
+  ],
   "trecho": "Ele limitou liberdades inúteis ou nocivas enquanto preservou as essenciais."
  },
  {
@@ -337,6 +524,9 @@ export const TESES = [
   "secao": "A absoluta primazia do Estado",
   "grupo": 2,
   "sinal": "rejeita",
+  "alvo": [
+   "juiz"
+  ],
   "trecho": "Nestas questões, o indivíduo não pode ser o juiz, apenas o Estado."
  },
  {
@@ -344,6 +534,9 @@ export const TESES = [
   "secao": "A absoluta primazia do Estado",
   "grupo": 4,
   "sinal": "afirma",
+  "alvo": [
+   "religião"
+  ],
   "trecho": "O Estado Fascista vê na religião uma das mais profundas manifestações espirituais e, por essa razão, não somente respeita a religião, mas a defende e a protege."
  },
  {
@@ -351,6 +544,10 @@ export const TESES = [
   "secao": "A absoluta primazia do Estado",
   "grupo": 1,
   "sinal": "afirma",
+  "alvo": [
+   "poder",
+   "comandar"
+  ],
   "trecho": "O Estado Fascista expressa a sua vontade de exercer o poder e comandar."
  },
  {
@@ -358,6 +555,10 @@ export const TESES = [
   "secao": "A absoluta primazia do Estado",
   "grupo": 5,
   "sinal": "afirma",
+  "alvo": [
+   "imperialista",
+   "expandirem"
+  ],
   "trecho": "O Fascismo vê no espírito imperialista – i.e. na tendência das nações expandirem – uma manifestação da sua virilidade."
  },
  {
@@ -365,6 +566,9 @@ export const TESES = [
   "secao": "A absoluta primazia do Estado",
   "grupo": 5,
   "sinal": "afirma",
+  "alvo": [
+   "imperialistas"
+  ],
   "trecho": "Os povos que se elevam ou reelevam são imperialistas; a renúncia é uma característica de povos que estão morrendo."
  },
  {
@@ -372,6 +576,11 @@ export const TESES = [
   "secao": "A absoluta primazia do Estado",
   "grupo": 5,
   "sinal": "afirma",
+  "alvo": [
+   "imperialismo",
+   "disciplina",
+   "sacrifício"
+  ],
   "trecho": "Mas imperialism implica disciplina, coordenação de esforços, um profundo senso de dever e um espírito de sacrifício próprio."
  },
  {
@@ -379,6 +588,10 @@ export const TESES = [
   "secao": "A absoluta primazia do Estado",
   "grupo": 1,
   "sinal": "afirma",
+  "alvo": [
+   "autoridade",
+   "ordem"
+  ],
   "trecho": "Nunca antes o povo havia clamado por autoridade, direção e ordem, como eles fazem agora."
  },
  {
@@ -386,6 +599,9 @@ export const TESES = [
   "secao": "Apêndice: vida como luta",
   "grupo": 3,
   "sinal": "afirma",
+  "alvo": [
+   "luta"
+  ],
   "trecho": "A luta está na origem de todas as coisas, porque a vida é cheia de contrastes: existe amor e ódio, branco e preto, dia e noite, bem e mal; e até que esses contrastes atinjam um equilibrio, a luta continuará fatalmente nas raízes da natureza humana."
  },
  {
@@ -393,6 +609,12 @@ export const TESES = [
   "secao": "Apêndice: histórica e realista",
   "grupo": 3,
   "sinal": "rejeita",
+  "alvo": [
+   "programas",
+   "planos",
+   "felicidade",
+   "salvação"
+  ],
   "trecho": "Nós não acreditamos em programas, em planos, em santos ou apóstolos, acima de tudo, nós não acreditamos na felicidade, na salvação, na Terra Prometida."
  },
  {
@@ -400,6 +622,10 @@ export const TESES = [
   "secao": "Apêndice: indivíduo e liberdade",
   "grupo": 2,
   "sinal": "afirma",
+  "alvo": [
+   "indivíduo",
+   "estado"
+  ],
   "trecho": "Nós fomos os primeiros a declarar, na cara do individualismo demo liberal, que o indivíduo existe somente enquanto que faça parte do Estado e esteja sujeito às exigências do Estado e que, na medida em que a civilização assume aspectos que se tornam mais e mais complicados, a liberdade individual também se torna mais e mais restrita."
  },
  {
@@ -407,6 +633,10 @@ export const TESES = [
   "secao": "Apêndice: indivíduo e liberdade",
   "grupo": 2,
   "sinal": "rejeita",
+  "alvo": [
+   "liberdade",
+   "direito"
+  ],
   "trecho": "Liberdade não é um direito, é um dever."
  },
  {
@@ -414,6 +644,10 @@ export const TESES = [
   "secao": "Apêndice: indivíduo e liberdade",
   "grupo": 2,
   "sinal": "rejeita",
+  "alvo": [
+   "igualdade",
+   "presente"
+  ],
   "trecho": "Não é um presente, é uma conquista; não é igualdade, é privilégio."
  },
  {
@@ -421,6 +655,9 @@ export const TESES = [
   "secao": "Apêndice: Estado corporativo",
   "grupo": 1,
   "sinal": "afirma",
+  "alvo": [
+   "estado"
+  ],
   "trecho": "Aqui eu desejo reafirmar sem fracas energias, a fórmula que eu expus na escala em Milão, tudo dentro do Estado, nada contra o Estado, e nada fora do Estado."
  },
  {
@@ -428,6 +665,11 @@ export const TESES = [
   "secao": "Apêndice: Estado corporativo",
   "grupo": 2,
   "sinal": "afirma",
+  "alvo": [
+   "controlamos",
+   "corporativo",
+   "forças"
+  ],
   "trecho": "Nós controlamos forças políticas, nós controlamos forças morais, controlamos forças econômicas, portanto somos um Estado Corporativo bem desenvolvido."
  },
  {
@@ -435,6 +677,10 @@ export const TESES = [
   "secao": "Apêndice: democracia",
   "grupo": 5,
   "sinal": "afirma",
+  "alvo": [
+   "guerra",
+   "democracia"
+  ],
   "trecho": "A guerra foi revolucionária, no sentido de que com jorro de sangue mandou embora o século da Democracia, o século do número, o século das maiorias e das quantidades."
  },
  {
@@ -442,6 +688,10 @@ export const TESES = [
   "secao": "Apêndice: concepção do Estado",
   "grupo": 4,
   "sinal": "rejeita",
+  "alvo": [
+   "estado",
+   "nação"
+  ],
   "trecho": "Sem o Estado não há nação."
  },
  {
@@ -449,6 +699,9 @@ export const TESES = [
   "secao": "Apêndice: realidade dinâmica",
   "grupo": 5,
   "sinal": "afirma",
+  "alvo": [
+   "poder"
+  ],
   "trecho": "Eu acredito que se um povo deseja viver, eles devem desenvolver uma vontade de poder, caso contrário eles vegetam, vivem miseravelmente, e se tornam uma presa para povos mais fortes, na qual a vontade de poder é desenvolvida em um grau maior."
  }
 ];
