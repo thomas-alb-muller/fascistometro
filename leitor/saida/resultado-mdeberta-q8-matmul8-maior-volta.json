@@ -1,0 +1,2257 @@
+{
+ "nli": "Xenova/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7",
+ "precisao": {
+  "frase": "q8",
+  "nli": "matmul8"
+ },
+ "sentido": "volta",
+ "regra": "maior",
+ "limites": {
+  "total": 0.475,
+  "parcial": 0.125,
+  "sentido": "volta",
+  "regra": "maior",
+  "contra": 0.5
+ },
+ "acertos": 8,
+ "margem": -4,
+ "tempo": {
+  "cargaMs": 8994,
+  "leituraMs": 10381,
+  "frasesNaConta": 36,
+  "pares": 216
+ },
+ "textos": [
+  {
+   "nome": "01-doutrina-literal",
+   "esperado": "alto",
+   "novo": {
+    "indice": 67,
+    "C": 4,
+    "N": 4,
+    "discordam": 0,
+    "frases": [
+     {
+      "frase": "Para o Fascismo, o Estado é absoluto, indivíduo e grupos, relativos.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T41",
+      "vizinhas": [
+       {
+        "tese": "T41",
+        "cosseno": 0.995,
+        "ida": {
+         "ent": 0.839,
+         "neu": 0.132,
+         "con": 0.028
+        },
+        "volta": {
+         "ent": 0.871,
+         "neu": 0.111,
+         "con": 0.018
+        }
+       },
+       {
+        "tese": "T14",
+        "cosseno": 0.785,
+        "ida": {
+         "ent": 0.136,
+         "neu": 0.728,
+         "con": 0.136
+        },
+        "volta": {
+         "ent": 0.334,
+         "neu": 0.455,
+         "con": 0.211
+        }
+       },
+       {
+        "tese": "T21",
+        "cosseno": 0.742,
+        "ida": {
+         "ent": 0.145,
+         "neu": 0.724,
+         "con": 0.131
+        },
+        "volta": {
+         "ent": 0.2,
+         "neu": 0.577,
+         "con": 0.223
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Liberdade não é um direito, é um dever.",
+      "fora": "curta"
+     },
+     {
+      "frase": "Falando de modo geral, o Fascismo não acredita na possibilidade ou na utilidade da paz perpétua.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T24",
+      "vizinhas": [
+       {
+        "tese": "T24",
+        "cosseno": 0.996,
+        "ida": {
+         "ent": 0.81,
+         "neu": 0.174,
+         "con": 0.017
+        },
+        "volta": {
+         "ent": 0.805,
+         "neu": 0.171,
+         "con": 0.024
+        }
+       },
+       {
+        "tese": "T30",
+        "cosseno": 0.707,
+        "ida": {
+         "ent": 0.022,
+         "neu": 0.275,
+         "con": 0.703
+        },
+        "volta": {
+         "ent": 0.105,
+         "neu": 0.318,
+         "con": 0.577
+        }
+       },
+       {
+        "tese": "T27",
+        "cosseno": 0.681,
+        "ida": {
+         "ent": 0.067,
+         "neu": 0.878,
+         "con": 0.055
+        },
+        "volta": {
+         "ent": 0.194,
+         "neu": 0.723,
+         "con": 0.083
+        }
+       }
+      ]
+     },
+     {
+      "frase": "O Fascismo é difinitiva e absolutamente contrário às doutrinas do liberalismo, tanto na esfera política quanto na econômica.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T37",
+      "vizinhas": [
+       {
+        "tese": "T37",
+        "cosseno": 0.996,
+        "ida": {
+         "ent": 0.58,
+         "neu": 0.382,
+         "con": 0.037
+        },
+        "volta": {
+         "ent": 0.61,
+         "neu": 0.369,
+         "con": 0.021
+        }
+       },
+       {
+        "tese": "T10",
+        "cosseno": 0.782,
+        "ida": {
+         "ent": 0.063,
+         "neu": 0.888,
+         "con": 0.05
+        },
+        "volta": {
+         "ent": 0.104,
+         "neu": 0.82,
+         "con": 0.076
+        }
+       },
+       {
+        "tese": "T17",
+        "cosseno": 0.759,
+        "ida": {
+         "ent": 0.098,
+         "neu": 0.835,
+         "con": 0.067
+        },
+        "volta": {
+         "ent": 0.05,
+         "neu": 0.912,
+         "con": 0.038
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Nunca antes o povo havia clamado por autoridade, direção e ordem, como eles fazem agora.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T54",
+      "vizinhas": [
+       {
+        "tese": "T54",
+        "cosseno": 0.995,
+        "ida": {
+         "ent": 0.658,
+         "neu": 0.315,
+         "con": 0.027
+        },
+        "volta": {
+         "ent": 0.612,
+         "neu": 0.358,
+         "con": 0.031
+        }
+       },
+       {
+        "tese": "T57",
+        "cosseno": 0.448,
+        "ida": {
+         "ent": 0.087,
+         "neu": 0.872,
+         "con": 0.041
+        },
+        "volta": {
+         "ent": 0.09,
+         "neu": 0.841,
+         "con": 0.069
+        }
+       },
+       {
+        "tese": "T33",
+        "cosseno": 0.439,
+        "ida": {
+         "ent": 0.059,
+         "neu": 0.862,
+         "con": 0.078
+        },
+        "volta": {
+         "ent": 0.185,
+         "neu": 0.639,
+         "con": 0.176
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "bv3": {
+    "indice": 67,
+    "C": 4,
+    "N": 4,
+    "discordam": 0,
+    "frases": [
+     {
+      "frase": "Para o Fascismo, o Estado é absoluto, indivíduo e grupos, relativos.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T41",
+      "valor": 1
+     },
+     {
+      "frase": "Liberdade não é um direito, é um dever.",
+      "fora": "curta"
+     },
+     {
+      "frase": "Falando de modo geral, o Fascismo não acredita na possibilidade ou na utilidade da paz perpétua.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T24",
+      "valor": 1
+     },
+     {
+      "frase": "O Fascismo é difinitiva e absolutamente contrário às doutrinas do liberalismo, tanto na esfera política quanto na econômica.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T37",
+      "valor": 1
+     },
+     {
+      "frase": "Nunca antes o povo havia clamado por autoridade, direção e ordem, como eles fazem agora.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T54",
+      "valor": 1
+     }
+    ]
+   }
+  },
+  {
+   "nome": "02-outras-palavras",
+   "esperado": "alto",
+   "novo": {
+    "indice": 29,
+    "C": 2,
+    "N": 5,
+    "discordam": 0,
+    "frases": [
+     {
+      "frase": "O governo está acima de tudo e de todos; cada pessoa só vale enquanto serve à pátria.",
+      "decisao": "nada",
+      "tese": "T18",
+      "vizinhas": [
+       {
+        "tese": "T18",
+        "cosseno": 0.545,
+        "ida": {
+         "ent": 0.122,
+         "neu": 0.716,
+         "con": 0.162
+        },
+        "volta": {
+         "ent": 0.104,
+         "neu": 0.73,
+         "con": 0.165
+        }
+       },
+       {
+        "tese": "T63",
+        "cosseno": 0.481,
+        "ida": {
+         "ent": 0.142,
+         "neu": 0.325,
+         "con": 0.533
+        },
+        "volta": {
+         "ent": 0.114,
+         "neu": 0.587,
+         "con": 0.299
+        }
+       },
+       {
+        "tese": "T61",
+        "cosseno": 0.469,
+        "ida": {
+         "ent": 0.119,
+         "neu": 0.813,
+         "con": 0.068
+        },
+        "volta": {
+         "ent": 0.11,
+         "neu": 0.742,
+         "con": 0.148
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Ser livre é cumprir obrigações, não reclamar direitos.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T58",
+      "vizinhas": [
+       {
+        "tese": "T58",
+        "cosseno": 0.668,
+        "ida": {
+         "ent": 0.541,
+         "neu": 0.332,
+         "con": 0.127
+        },
+        "volta": {
+         "ent": 0.488,
+         "neu": 0.474,
+         "con": 0.039
+        }
+       },
+       {
+        "tese": "T59",
+        "cosseno": 0.536,
+        "ida": {
+         "ent": 0.255,
+         "neu": 0.499,
+         "con": 0.246
+        },
+        "volta": {
+         "ent": 0.299,
+         "neu": 0.591,
+         "con": 0.11
+        }
+       },
+       {
+        "tese": "T47",
+        "cosseno": 0.483,
+        "ida": {
+         "ent": 0.17,
+         "neu": 0.665,
+         "con": 0.166
+        },
+        "volta": {
+         "ent": 0.194,
+         "neu": 0.619,
+         "con": 0.187
+        }
+       }
+      ]
+     },
+     {
+      "frase": "A ideia de um mundo sem conflitos armados é uma ilusão de fracos.",
+      "decisao": "nada",
+      "tese": "T26",
+      "vizinhas": [
+       {
+        "tese": "T26",
+        "cosseno": 0.532,
+        "ida": {
+         "ent": 0.021,
+         "neu": 0.889,
+         "con": 0.09
+        },
+        "volta": {
+         "ent": 0.019,
+         "neu": 0.956,
+         "con": 0.025
+        }
+       },
+       {
+        "tese": "T16",
+        "cosseno": 0.531,
+        "ida": {
+         "ent": 0.09,
+         "neu": 0.796,
+         "con": 0.114
+        },
+        "volta": {
+         "ent": 0.078,
+         "neu": 0.855,
+         "con": 0.067
+        }
+       },
+       {
+        "tese": "T30",
+        "cosseno": 0.527,
+        "ida": {
+         "ent": 0.101,
+         "neu": 0.728,
+         "con": 0.171
+        },
+        "volta": {
+         "ent": 0.066,
+         "neu": 0.877,
+         "con": 0.057
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Rejeitamos o mercado livre e o individualismo dos liberais.",
+      "decisao": "concorda",
+      "grau": "parcial",
+      "tese": "T12",
+      "vizinhas": [
+       {
+        "tese": "T38",
+        "cosseno": 0.565,
+        "ida": {
+         "ent": 0.076,
+         "neu": 0.796,
+         "con": 0.128
+        },
+        "volta": {
+         "ent": 0.134,
+         "neu": 0.758,
+         "con": 0.108
+        }
+       },
+       {
+        "tese": "T12",
+        "cosseno": 0.553,
+        "ida": {
+         "ent": 0.219,
+         "neu": 0.572,
+         "con": 0.209
+        },
+        "volta": {
+         "ent": 0.279,
+         "neu": 0.588,
+         "con": 0.133
+        }
+       },
+       {
+        "tese": "T35",
+        "cosseno": 0.531,
+        "ida": {
+         "ent": 0.094,
+         "neu": 0.754,
+         "con": 0.153
+        },
+        "volta": {
+         "ent": 0.135,
+         "neu": 0.739,
+         "con": 0.127
+        }
+       }
+      ]
+     },
+     {
+      "frase": "O povo pede comando firme e obediência.",
+      "decisao": "concorda",
+      "grau": "parcial",
+      "tese": "T54",
+      "vizinhas": [
+       {
+        "tese": "T54",
+        "cosseno": 0.617,
+        "ida": {
+         "ent": 0.092,
+         "neu": 0.837,
+         "con": 0.071
+        },
+        "volta": {
+         "ent": 0.349,
+         "neu": 0.559,
+         "con": 0.093
+        }
+       },
+       {
+        "tese": "T23",
+        "cosseno": 0.513,
+        "ida": {
+         "ent": 0.119,
+         "neu": 0.745,
+         "con": 0.136
+        },
+        "volta": {
+         "ent": 0.264,
+         "neu": 0.597,
+         "con": 0.139
+        }
+       },
+       {
+        "tese": "T53",
+        "cosseno": 0.473,
+        "ida": {
+         "ent": 0.167,
+         "neu": 0.739,
+         "con": 0.094
+        },
+        "volta": {
+         "ent": 0.267,
+         "neu": 0.594,
+         "con": 0.139
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "bv3": {
+    "indice": 36,
+    "C": 2.5,
+    "N": 5,
+    "discordam": 0,
+    "frases": [
+     {
+      "frase": "O governo está acima de tudo e de todos; cada pessoa só vale enquanto serve à pátria.",
+      "decisao": "nada",
+      "tese": "T28",
+      "valor": 0.422
+     },
+     {
+      "frase": "Ser livre é cumprir obrigações, não reclamar direitos.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T58",
+      "valor": 0.544
+     },
+     {
+      "frase": "A ideia de um mundo sem conflitos armados é uma ilusão de fracos.",
+      "decisao": "nada",
+      "tese": "T34",
+      "valor": 0.438
+     },
+     {
+      "frase": "Rejeitamos o mercado livre e o individualismo dos liberais.",
+      "decisao": "concorda",
+      "grau": "parcial",
+      "tese": "T45",
+      "valor": 0.519
+     },
+     {
+      "frase": "O povo pede comando firme e obediência.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T54",
+      "valor": 0.53
+     }
+    ]
+   }
+  },
+  {
+   "nome": "03-negado",
+   "esperado": "baixo",
+   "novo": {
+    "indice": 0,
+    "C": 0,
+    "N": 4,
+    "discordam": 2,
+    "frases": [
+     {
+      "frase": "O Estado não é absoluto, e o indivíduo vem antes dele.",
+      "decisao": "nada",
+      "tese": "T48",
+      "vizinhas": [
+       {
+        "tese": "T48",
+        "cosseno": 0.584,
+        "ida": {
+         "ent": 0.171,
+         "neu": 0.673,
+         "con": 0.155
+        },
+        "volta": {
+         "ent": 0.25,
+         "neu": 0.611,
+         "con": 0.138
+        }
+       },
+       {
+        "tese": "T63",
+        "cosseno": 0.537,
+        "ida": {
+         "ent": 0.469,
+         "neu": 0.39,
+         "con": 0.141
+        },
+        "volta": {
+         "ent": 0.297,
+         "neu": 0.613,
+         "con": 0.091
+        }
+       },
+       {
+        "tese": "T18",
+        "cosseno": 0.523,
+        "ida": {
+         "ent": 0.116,
+         "neu": 0.749,
+         "con": 0.135
+        },
+        "volta": {
+         "ent": 0.111,
+         "neu": 0.535,
+         "con": 0.354
+        }
+       }
+      ]
+     },
+     {
+      "frase": "A liberdade é um direito, não um dever.",
+      "fora": "curta"
+     },
+     {
+      "frase": "A paz perpétua é possível e útil.",
+      "decisao": "nada",
+      "tese": "T26",
+      "vizinhas": [
+       {
+        "tese": "T26",
+        "cosseno": 0.356,
+        "ida": {
+         "ent": 0.053,
+         "neu": 0.815,
+         "con": 0.131
+        },
+        "volta": {
+         "ent": 0.251,
+         "neu": 0.588,
+         "con": 0.161
+        }
+       },
+       {
+        "tese": "T18",
+        "cosseno": 0.354,
+        "ida": {
+         "ent": 0.104,
+         "neu": 0.758,
+         "con": 0.138
+        },
+        "volta": {
+         "ent": 0.239,
+         "neu": 0.623,
+         "con": 0.137
+        }
+       },
+       {
+        "tese": "T24",
+        "cosseno": 0.347,
+        "ida": {
+         "ent": 0.021,
+         "neu": 0.138,
+         "con": 0.841
+        },
+        "volta": {
+         "ent": 0.238,
+         "neu": 0.508,
+         "con": 0.254
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Não sou contrário às doutrinas do liberalismo, nem na política nem na economia.",
+      "decisao": "discorda",
+      "tese": "T37",
+      "vizinhas": [
+       {
+        "tese": "T38",
+        "cosseno": 0.533,
+        "ida": {
+         "ent": 0.053,
+         "neu": 0.878,
+         "con": 0.068
+        },
+        "volta": {
+         "ent": 0.121,
+         "neu": 0.713,
+         "con": 0.166
+        }
+       },
+       {
+        "tese": "T37",
+        "cosseno": 0.521,
+        "ida": {
+         "ent": 0.174,
+         "neu": 0.642,
+         "con": 0.183
+        },
+        "volta": {
+         "ent": 0.136,
+         "neu": 0.324,
+         "con": 0.54
+        }
+       },
+       {
+        "tese": "T12",
+        "cosseno": 0.496,
+        "ida": {
+         "ent": 0.178,
+         "neu": 0.599,
+         "con": 0.222
+        },
+        "volta": {
+         "ent": 0.09,
+         "neu": 0.787,
+         "con": 0.123
+        }
+       }
+      ]
+     },
+     {
+      "frase": "O povo não clama por autoridade e ordem.",
+      "decisao": "discorda",
+      "tese": "T54",
+      "vizinhas": [
+       {
+        "tese": "T54",
+        "cosseno": 0.684,
+        "ida": {
+         "ent": 0.055,
+         "neu": 0.809,
+         "con": 0.136
+        },
+        "volta": {
+         "ent": 0.097,
+         "neu": 0.086,
+         "con": 0.817
+        }
+       },
+       {
+        "tese": "T58",
+        "cosseno": 0.51,
+        "ida": {
+         "ent": 0.265,
+         "neu": 0.59,
+         "con": 0.144
+        },
+        "volta": {
+         "ent": 0.31,
+         "neu": 0.602,
+         "con": 0.088
+        }
+       },
+       {
+        "tese": "T33",
+        "cosseno": 0.474,
+        "ida": {
+         "ent": 0.047,
+         "neu": 0.783,
+         "con": 0.17
+        },
+        "volta": {
+         "ent": 0.064,
+         "neu": 0.236,
+         "con": 0.699
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "bv3": {
+    "indice": 0,
+    "C": 0,
+    "N": 4,
+    "discordam": 3,
+    "frases": [
+     {
+      "frase": "O Estado não é absoluto, e o indivíduo vem antes dele.",
+      "decisao": "nada",
+      "tese": "T12",
+      "valor": 0.451
+     },
+     {
+      "frase": "A liberdade é um direito, não um dever.",
+      "fora": "curta"
+     },
+     {
+      "frase": "A paz perpétua é possível e útil.",
+      "decisao": "discorda",
+      "grau": "total",
+      "tese": "T24",
+      "valor": 0.695
+     },
+     {
+      "frase": "Não sou contrário às doutrinas do liberalismo, nem na política nem na economia.",
+      "decisao": "discorda",
+      "grau": "total",
+      "tese": "T37",
+      "valor": 0.816
+     },
+     {
+      "frase": "O povo não clama por autoridade e ordem.",
+      "decisao": "discorda",
+      "grau": "total",
+      "tese": "T54",
+      "valor": 0.688
+     }
+    ]
+   }
+  },
+  {
+   "nome": "04-aula-historia",
+   "esperado": "baixo",
+   "novo": {
+    "indice": 0,
+    "C": 0,
+    "N": 3,
+    "discordam": 0,
+    "frases": [
+     {
+      "frase": "O fascismo surgiu na Itália depois da Primeira Guerra Mundial.",
+      "decisao": "nada",
+      "tese": "T51",
+      "vizinhas": [
+       {
+        "tese": "T51",
+        "cosseno": 0.503,
+        "ida": {
+         "ent": 0.092,
+         "neu": 0.818,
+         "con": 0.09
+        },
+        "volta": {
+         "ent": 0.039,
+         "neu": 0.92,
+         "con": 0.041
+        }
+       },
+       {
+        "tese": "T40",
+        "cosseno": 0.477,
+        "ida": {
+         "ent": 0.148,
+         "neu": 0.774,
+         "con": 0.078
+        },
+        "volta": {
+         "ent": 0.008,
+         "neu": 0.983,
+         "con": 0.009
+        }
+       },
+       {
+        "tese": "T45",
+        "cosseno": 0.477,
+        "ida": {
+         "ent": 0.179,
+         "neu": 0.699,
+         "con": 0.122
+        },
+        "volta": {
+         "ent": 0.025,
+         "neu": 0.938,
+         "con": 0.038
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Mussolini defendia que o Estado era absoluto e que o indivíduo só existia dentro dele.",
+      "fora": "relato"
+     },
+     {
+      "frase": "Os fascistas desprezavam o liberalismo e a democracia parlamentar.",
+      "fora": "relato"
+     },
+     {
+      "frase": "Segundo a doutrina oficial, a guerra enobrecia os povos.",
+      "decisao": "nada",
+      "tese": "T26",
+      "vizinhas": [
+       {
+        "tese": "T26",
+        "cosseno": 0.661,
+        "ida": {
+         "ent": 0.044,
+         "neu": 0.858,
+         "con": 0.098
+        },
+        "volta": {
+         "ent": 0.098,
+         "neu": 0.77,
+         "con": 0.132
+        }
+       },
+       {
+        "tese": "T62",
+        "cosseno": 0.619,
+        "ida": {
+         "ent": 0.087,
+         "neu": 0.826,
+         "con": 0.087
+        },
+        "volta": {
+         "ent": 0.157,
+         "neu": 0.668,
+         "con": 0.175
+        }
+       },
+       {
+        "tese": "T51",
+        "cosseno": 0.434,
+        "ida": {
+         "ent": 0.103,
+         "neu": 0.796,
+         "con": 0.1
+        },
+        "volta": {
+         "ent": 0.116,
+         "neu": 0.743,
+         "con": 0.141
+        }
+       }
+      ]
+     },
+     {
+      "frase": "O regime terminou em 1945, com a derrota na Segunda Guerra.",
+      "decisao": "nada",
+      "tese": "T62",
+      "vizinhas": [
+       {
+        "tese": "T62",
+        "cosseno": 0.345,
+        "ida": {
+         "ent": 0.136,
+         "neu": 0.777,
+         "con": 0.087
+        },
+        "volta": {
+         "ent": 0.014,
+         "neu": 0.965,
+         "con": 0.021
+        }
+       },
+       {
+        "tese": "T35",
+        "cosseno": 0.339,
+        "ida": {
+         "ent": 0.061,
+         "neu": 0.724,
+         "con": 0.214
+        },
+        "volta": {
+         "ent": 0.032,
+         "neu": 0.908,
+         "con": 0.061
+        }
+       },
+       {
+        "tese": "T06",
+        "cosseno": 0.331,
+        "ida": {
+         "ent": 0.105,
+         "neu": 0.777,
+         "con": 0.118
+        },
+        "volta": {
+         "ent": 0.021,
+         "neu": 0.938,
+         "con": 0.041
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "bv3": {
+    "indice": 20,
+    "C": 1,
+    "N": 3,
+    "discordam": 0,
+    "frases": [
+     {
+      "frase": "O fascismo surgiu na Itália depois da Primeira Guerra Mundial.",
+      "decisao": "nada",
+      "tese": "T02",
+      "valor": 0.453
+     },
+     {
+      "frase": "Mussolini defendia que o Estado era absoluto e que o indivíduo só existia dentro dele.",
+      "fora": "relato"
+     },
+     {
+      "frase": "Os fascistas desprezavam o liberalismo e a democracia parlamentar.",
+      "fora": "relato"
+     },
+     {
+      "frase": "Segundo a doutrina oficial, a guerra enobrecia os povos.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T52",
+      "valor": 0.667
+     },
+     {
+      "frase": "O regime terminou em 1945, com a derrota na Segunda Guerra.",
+      "decisao": "nada",
+      "tese": "T36",
+      "valor": 0.466
+     }
+    ]
+   }
+  },
+  {
+   "nome": "05-antifascista",
+   "esperado": "baixo",
+   "novo": {
+    "indice": 7,
+    "C": 0.5,
+    "N": 5,
+    "discordam": 0,
+    "frases": [
+     {
+      "frase": "Nenhum governo pode estar acima das pessoas.",
+      "decisao": "concorda",
+      "grau": "parcial",
+      "tese": "T15",
+      "vizinhas": [
+       {
+        "tese": "T63",
+        "cosseno": 0.643,
+        "ida": {
+         "ent": 0.339,
+         "neu": 0.551,
+         "con": 0.109
+        },
+        "volta": {
+         "ent": 0.16,
+         "neu": 0.691,
+         "con": 0.148
+        }
+       },
+       {
+        "tese": "T15",
+        "cosseno": 0.571,
+        "ida": {
+         "ent": 0.21,
+         "neu": 0.691,
+         "con": 0.099
+        },
+        "volta": {
+         "ent": 0.36,
+         "neu": 0.522,
+         "con": 0.118
+        }
+       },
+       {
+        "tese": "T34",
+        "cosseno": 0.513,
+        "ida": {
+         "ent": 0.096,
+         "neu": 0.826,
+         "con": 0.078
+        },
+        "volta": {
+         "ent": 0.095,
+         "neu": 0.697,
+         "con": 0.208
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Cada cidadão tem direitos que o Estado não pode tirar.",
+      "decisao": "nada",
+      "tese": "T58",
+      "vizinhas": [
+       {
+        "tese": "T58",
+        "cosseno": 0.615,
+        "ida": {
+         "ent": 0.206,
+         "neu": 0.641,
+         "con": 0.153
+        },
+        "volta": {
+         "ent": 0.05,
+         "neu": 0.841,
+         "con": 0.109
+        }
+       },
+       {
+        "tese": "T18",
+        "cosseno": 0.591,
+        "ida": {
+         "ent": 0.07,
+         "neu": 0.699,
+         "con": 0.231
+        },
+        "volta": {
+         "ent": 0.039,
+         "neu": 0.642,
+         "con": 0.319
+        }
+       },
+       {
+        "tese": "T48",
+        "cosseno": 0.579,
+        "ida": {
+         "ent": 0.318,
+         "neu": 0.61,
+         "con": 0.072
+        },
+        "volta": {
+         "ent": 0.278,
+         "neu": 0.501,
+         "con": 0.221
+        }
+       }
+      ]
+     },
+     {
+      "frase": "A democracia, com eleições livres e partidos diversos, é a melhor forma de governo que conhecemos.",
+      "decisao": "nada",
+      "tese": "T34",
+      "vizinhas": [
+       {
+        "tese": "T34",
+        "cosseno": 0.672,
+        "ida": {
+         "ent": 0.101,
+         "neu": 0.83,
+         "con": 0.069
+        },
+        "volta": {
+         "ent": 0.034,
+         "neu": 0.841,
+         "con": 0.126
+        }
+       },
+       {
+        "tese": "T33",
+        "cosseno": 0.544,
+        "ida": {
+         "ent": 0.098,
+         "neu": 0.826,
+         "con": 0.076
+        },
+        "volta": {
+         "ent": 0.025,
+         "neu": 0.926,
+         "con": 0.049
+        }
+       },
+       {
+        "tese": "T36",
+        "cosseno": 0.544,
+        "ida": {
+         "ent": 0.104,
+         "neu": 0.805,
+         "con": 0.091
+        },
+        "volta": {
+         "ent": 0.017,
+         "neu": 0.959,
+         "con": 0.025
+        }
+       }
+      ]
+     },
+     {
+      "frase": "A guerra não enobrece ninguém; ela destrói vidas.",
+      "decisao": "nada",
+      "tese": "T26",
+      "vizinhas": [
+       {
+        "tese": "T26",
+        "cosseno": 0.629,
+        "ida": {
+         "ent": 0.039,
+         "neu": 0.737,
+         "con": 0.224
+        },
+        "volta": {
+         "ent": 0.063,
+         "neu": 0.706,
+         "con": 0.231
+        }
+       },
+       {
+        "tese": "T24",
+        "cosseno": 0.469,
+        "ida": {
+         "ent": 0.156,
+         "neu": 0.612,
+         "con": 0.232
+        },
+        "volta": {
+         "ent": 0.132,
+         "neu": 0.657,
+         "con": 0.211
+        }
+       },
+       {
+        "tese": "T62",
+        "cosseno": 0.414,
+        "ida": {
+         "ent": 0.111,
+         "neu": 0.704,
+         "con": 0.186
+        },
+        "volta": {
+         "ent": 0.097,
+         "neu": 0.728,
+         "con": 0.176
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Defendemos a igualdade de todos perante a lei e o direito de discordar.",
+      "decisao": "nada",
+      "tese": "T58",
+      "vizinhas": [
+       {
+        "tese": "T58",
+        "cosseno": 0.379,
+        "ida": {
+         "ent": 0.026,
+         "neu": 0.337,
+         "con": 0.637
+        },
+        "volta": {
+         "ent": 0.103,
+         "neu": 0.648,
+         "con": 0.249
+        }
+       },
+       {
+        "tese": "T18",
+        "cosseno": 0.323,
+        "ida": {
+         "ent": 0.1,
+         "neu": 0.727,
+         "con": 0.173
+        },
+        "volta": {
+         "ent": 0.095,
+         "neu": 0.818,
+         "con": 0.087
+        }
+       },
+       {
+        "tese": "T39",
+        "cosseno": 0.316,
+        "ida": {
+         "ent": 0.141,
+         "neu": 0.758,
+         "con": 0.101
+        },
+        "volta": {
+         "ent": 0.101,
+         "neu": 0.814,
+         "con": 0.085
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "bv3": {
+    "indice": 0,
+    "C": 0,
+    "N": 5,
+    "discordam": 4,
+    "frases": [
+     {
+      "frase": "Nenhum governo pode estar acima das pessoas.",
+      "decisao": "nada",
+      "tese": "T48",
+      "valor": 0.319
+     },
+     {
+      "frase": "Cada cidadão tem direitos que o Estado não pode tirar.",
+      "decisao": "discorda",
+      "grau": "parcial",
+      "tese": "T58",
+      "valor": 0.494
+     },
+     {
+      "frase": "A democracia, com eleições livres e partidos diversos, é a melhor forma de governo que conhecemos.",
+      "decisao": "discorda",
+      "grau": "total",
+      "tese": "T15",
+      "valor": 0.579
+     },
+     {
+      "frase": "A guerra não enobrece ninguém; ela destrói vidas.",
+      "decisao": "discorda",
+      "grau": "parcial",
+      "tese": "T55",
+      "valor": 0.524
+     },
+     {
+      "frase": "Defendemos a igualdade de todos perante a lei e o direito de discordar.",
+      "decisao": "discorda",
+      "grau": "total",
+      "tese": "T58",
+      "valor": 0.596
+     }
+    ]
+   }
+  },
+  {
+   "nome": "06-direitos-humanos",
+   "esperado": "baixo",
+   "novo": {
+    "indice": 0,
+    "C": 0,
+    "N": 5,
+    "discordam": 0,
+    "frases": [
+     {
+      "frase": "Todos os seres humanos nascem livres e iguais em dignidade e em direitos.",
+      "decisao": "nada",
+      "tese": "T58",
+      "vizinhas": [
+       {
+        "tese": "T58",
+        "cosseno": 0.437,
+        "ida": {
+         "ent": 0.063,
+         "neu": 0.705,
+         "con": 0.232
+        },
+        "volta": {
+         "ent": 0.137,
+         "neu": 0.694,
+         "con": 0.169
+        }
+       },
+       {
+        "tese": "T18",
+        "cosseno": 0.397,
+        "ida": {
+         "ent": 0.113,
+         "neu": 0.786,
+         "con": 0.101
+        },
+        "volta": {
+         "ent": 0.083,
+         "neu": 0.686,
+         "con": 0.231
+        }
+       },
+       {
+        "tese": "T57",
+        "cosseno": 0.383,
+        "ida": {
+         "ent": 0.14,
+         "neu": 0.823,
+         "con": 0.037
+        },
+        "volta": {
+         "ent": 0.059,
+         "neu": 0.787,
+         "con": 0.154
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Todo ser humano tem direito à vida, à liberdade e à segurança pessoal.",
+      "decisao": "nada",
+      "tese": "T58",
+      "vizinhas": [
+       {
+        "tese": "T58",
+        "cosseno": 0.532,
+        "ida": {
+         "ent": 0.019,
+         "neu": 0.584,
+         "con": 0.396
+        },
+        "volta": {
+         "ent": 0.022,
+         "neu": 0.488,
+         "con": 0.489
+        }
+       },
+       {
+        "tese": "T28",
+        "cosseno": 0.482,
+        "ida": {
+         "ent": 0.072,
+         "neu": 0.873,
+         "con": 0.055
+        },
+        "volta": {
+         "ent": 0.095,
+         "neu": 0.816,
+         "con": 0.09
+        }
+       },
+       {
+        "tese": "T01",
+        "cosseno": 0.464,
+        "ida": {
+         "ent": 0.133,
+         "neu": 0.738,
+         "con": 0.13
+        },
+        "volta": {
+         "ent": 0.176,
+         "neu": 0.677,
+         "con": 0.147
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Todo ser humano tem direito à liberdade de opinião e expressão.",
+      "decisao": "nada",
+      "tese": "T58",
+      "vizinhas": [
+       {
+        "tese": "T58",
+        "cosseno": 0.52,
+        "ida": {
+         "ent": 0.023,
+         "neu": 0.516,
+         "con": 0.461
+        },
+        "volta": {
+         "ent": 0.056,
+         "neu": 0.774,
+         "con": 0.171
+        }
+       },
+       {
+        "tese": "T57",
+        "cosseno": 0.461,
+        "ida": {
+         "ent": 0.092,
+         "neu": 0.88,
+         "con": 0.029
+        },
+        "volta": {
+         "ent": 0.035,
+         "neu": 0.89,
+         "con": 0.075
+        }
+       },
+       {
+        "tese": "T39",
+        "cosseno": 0.403,
+        "ida": {
+         "ent": 0.087,
+         "neu": 0.821,
+         "con": 0.092
+        },
+        "volta": {
+         "ent": 0.026,
+         "neu": 0.818,
+         "con": 0.156
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Todo ser humano tem direito à liberdade de reunião e associação pacíficas.",
+      "decisao": "nada",
+      "tese": "T58",
+      "vizinhas": [
+       {
+        "tese": "T58",
+        "cosseno": 0.486,
+        "ida": {
+         "ent": 0.011,
+         "neu": 0.173,
+         "con": 0.816
+        },
+        "volta": {
+         "ent": 0.047,
+         "neu": 0.515,
+         "con": 0.438
+        }
+       },
+       {
+        "tese": "T57",
+        "cosseno": 0.442,
+        "ida": {
+         "ent": 0.116,
+         "neu": 0.852,
+         "con": 0.032
+        },
+        "volta": {
+         "ent": 0.103,
+         "neu": 0.765,
+         "con": 0.132
+        }
+       },
+       {
+        "tese": "T18",
+        "cosseno": 0.417,
+        "ida": {
+         "ent": 0.081,
+         "neu": 0.776,
+         "con": 0.143
+        },
+        "volta": {
+         "ent": 0.085,
+         "neu": 0.821,
+         "con": 0.094
+        }
+       }
+      ]
+     },
+     {
+      "frase": "A vontade do povo será a base da autoridade do governo e será expressa em eleições periódicas e legítimas, por sufrágio universal.",
+      "decisao": "nada",
+      "tese": "T64",
+      "vizinhas": [
+       {
+        "tese": "T64",
+        "cosseno": 0.598,
+        "ida": {
+         "ent": 0.066,
+         "neu": 0.904,
+         "con": 0.03
+        },
+        "volta": {
+         "ent": 0.029,
+         "neu": 0.926,
+         "con": 0.045
+        }
+       },
+       {
+        "tese": "T18",
+        "cosseno": 0.553,
+        "ida": {
+         "ent": 0.161,
+         "neu": 0.715,
+         "con": 0.125
+        },
+        "volta": {
+         "ent": 0.094,
+         "neu": 0.815,
+         "con": 0.091
+        }
+       },
+       {
+        "tese": "T33",
+        "cosseno": 0.533,
+        "ida": {
+         "ent": 0.084,
+         "neu": 0.853,
+         "con": 0.063
+        },
+        "volta": {
+         "ent": 0.052,
+         "neu": 0.878,
+         "con": 0.07
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "bv3": {
+    "indice": 14,
+    "C": 1,
+    "N": 5,
+    "discordam": 4,
+    "frases": [
+     {
+      "frase": "Todos os seres humanos nascem livres e iguais em dignidade e em direitos.",
+      "decisao": "discorda",
+      "grau": "total",
+      "tese": "T31",
+      "valor": 0.576
+     },
+     {
+      "frase": "Todo ser humano tem direito à vida, à liberdade e à segurança pessoal.",
+      "decisao": "discorda",
+      "grau": "total",
+      "tese": "T58",
+      "valor": 0.599
+     },
+     {
+      "frase": "Todo ser humano tem direito à liberdade de opinião e expressão.",
+      "decisao": "discorda",
+      "grau": "total",
+      "tese": "T58",
+      "valor": 0.614
+     },
+     {
+      "frase": "Todo ser humano tem direito à liberdade de reunião e associação pacíficas.",
+      "decisao": "discorda",
+      "grau": "total",
+      "tese": "T11",
+      "valor": 0.548
+     },
+     {
+      "frase": "A vontade do povo será a base da autoridade do governo e será expressa em eleições periódicas e legítimas, por sufrágio universal.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T36",
+      "valor": 0.553
+     }
+    ]
+   }
+  },
+  {
+   "nome": "07-militarista",
+   "esperado": "alto",
+   "novo": {
+    "indice": 25,
+    "C": 1.5,
+    "N": 4,
+    "discordam": 0,
+    "frases": [
+     {
+      "frase": "Só a guerra revela a coragem verdadeira de um povo.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T26",
+      "vizinhas": [
+       {
+        "tese": "T26",
+        "cosseno": 0.797,
+        "ida": {
+         "ent": 0.073,
+         "neu": 0.849,
+         "con": 0.078
+        },
+        "volta": {
+         "ent": 0.527,
+         "neu": 0.397,
+         "con": 0.075
+        }
+       },
+       {
+        "tese": "T30",
+        "cosseno": 0.483,
+        "ida": {
+         "ent": 0.063,
+         "neu": 0.743,
+         "con": 0.194
+        },
+        "volta": {
+         "ent": 0.082,
+         "neu": 0.714,
+         "con": 0.204
+        }
+       },
+       {
+        "tese": "T62",
+        "cosseno": 0.433,
+        "ida": {
+         "ent": 0.083,
+         "neu": 0.847,
+         "con": 0.07
+        },
+        "volta": {
+         "ent": 0.109,
+         "neu": 0.801,
+         "con": 0.09
+        }
+       }
+      ]
+     },
+     {
+      "frase": "O pacifismo é coisa de covardes que fogem do sacrifício.",
+      "decisao": "concorda",
+      "grau": "parcial",
+      "tese": "T25",
+      "vizinhas": [
+       {
+        "tese": "T25",
+        "cosseno": 0.764,
+        "ida": {
+         "ent": 0.106,
+         "neu": 0.783,
+         "con": 0.111
+        },
+        "volta": {
+         "ent": 0.404,
+         "neu": 0.499,
+         "con": 0.097
+        }
+       },
+       {
+        "tese": "T35",
+        "cosseno": 0.539,
+        "ida": {
+         "ent": 0.05,
+         "neu": 0.842,
+         "con": 0.108
+        },
+        "volta": {
+         "ent": 0.11,
+         "neu": 0.729,
+         "con": 0.161
+        }
+       },
+       {
+        "tese": "T30",
+        "cosseno": 0.511,
+        "ida": {
+         "ent": 0.073,
+         "neu": 0.708,
+         "con": 0.218
+        },
+        "volta": {
+         "ent": 0.088,
+         "neu": 0.751,
+         "con": 0.161
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Uma nação forte precisa expandir suas fronteiras ou será devorada pelas mais fortes.",
+      "decisao": "nada",
+      "tese": "T26",
+      "vizinhas": [
+       {
+        "tese": "T26",
+        "cosseno": 0.477,
+        "ida": {
+         "ent": 0.024,
+         "neu": 0.84,
+         "con": 0.136
+        },
+        "volta": {
+         "ent": 0.035,
+         "neu": 0.918,
+         "con": 0.047
+        }
+       },
+       {
+        "tese": "T51",
+        "cosseno": 0.457,
+        "ida": {
+         "ent": 0.13,
+         "neu": 0.764,
+         "con": 0.106
+        },
+        "volta": {
+         "ent": 0.055,
+         "neu": 0.896,
+         "con": 0.05
+        }
+       },
+       {
+        "tese": "T20",
+        "cosseno": 0.456,
+        "ida": {
+         "ent": 0.17,
+         "neu": 0.723,
+         "con": 0.107
+        },
+        "volta": {
+         "ent": 0.046,
+         "neu": 0.928,
+         "con": 0.026
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Morrer pela pátria é a maior honra de um homem.",
+      "decisao": "nada",
+      "tese": "T28",
+      "vizinhas": [
+       {
+        "tese": "T28",
+        "cosseno": 0.49,
+        "ida": {
+         "ent": 0.045,
+         "neu": 0.898,
+         "con": 0.057
+        },
+        "volta": {
+         "ent": 0.025,
+         "neu": 0.897,
+         "con": 0.077
+        }
+       },
+       {
+        "tese": "T01",
+        "cosseno": 0.473,
+        "ida": {
+         "ent": 0.095,
+         "neu": 0.82,
+         "con": 0.085
+        },
+        "volta": {
+         "ent": 0.107,
+         "neu": 0.716,
+         "con": 0.177
+        }
+       },
+       {
+        "tese": "T18",
+        "cosseno": 0.442,
+        "ida": {
+         "ent": 0.065,
+         "neu": 0.78,
+         "con": 0.155
+        },
+        "volta": {
+         "ent": 0.033,
+         "neu": 0.874,
+         "con": 0.093
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "bv3": {
+    "indice": 33,
+    "C": 2,
+    "N": 4,
+    "discordam": 1,
+    "frases": [
+     {
+      "frase": "Só a guerra revela a coragem verdadeira de um povo.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T18",
+      "valor": 0.623
+     },
+     {
+      "frase": "O pacifismo é coisa de covardes que fogem do sacrifício.",
+      "decisao": "discorda",
+      "grau": "parcial",
+      "tese": "T55",
+      "valor": 0.478
+     },
+     {
+      "frase": "Uma nação forte precisa expandir suas fronteiras ou será devorada pelas mais fortes.",
+      "decisao": "concorda",
+      "grau": "parcial",
+      "tese": "T51",
+      "valor": 0.491
+     },
+     {
+      "frase": "Morrer pela pátria é a maior honra de um homem.",
+      "decisao": "concorda",
+      "grau": "parcial",
+      "tese": "T18",
+      "valor": 0.486
+     }
+    ]
+   }
+  },
+  {
+   "nome": "08-receita",
+   "esperado": "baixo",
+   "novo": {
+    "indice": 17,
+    "C": 1,
+    "N": 4,
+    "discordam": 0,
+    "frases": [
+     {
+      "frase": "Bata os ovos com o açúcar até formar um creme claro.",
+      "decisao": "nada",
+      "tese": "T60",
+      "vizinhas": [
+       {
+        "tese": "T60",
+        "cosseno": 0.143,
+        "ida": {
+         "ent": 0.088,
+         "neu": 0.744,
+         "con": 0.169
+        },
+        "volta": {
+         "ent": 0.076,
+         "neu": 0.86,
+         "con": 0.064
+        }
+       },
+       {
+        "tese": "T44",
+        "cosseno": 0.109,
+        "ida": {
+         "ent": 0.067,
+         "neu": 0.806,
+         "con": 0.127
+        },
+        "volta": {
+         "ent": 0.071,
+         "neu": 0.863,
+         "con": 0.066
+        }
+       },
+       {
+        "tese": "T31",
+        "cosseno": 0.081,
+        "ida": {
+         "ent": 0.077,
+         "neu": 0.772,
+         "con": 0.151
+        },
+        "volta": {
+         "ent": 0.097,
+         "neu": 0.842,
+         "con": 0.061
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Junte a farinha peneirada e o leite aos poucos.",
+      "decisao": "concorda",
+      "grau": "parcial",
+      "tese": "T60",
+      "vizinhas": [
+       {
+        "tese": "T60",
+        "cosseno": 0.163,
+        "ida": {
+         "ent": 0.076,
+         "neu": 0.784,
+         "con": 0.14
+        },
+        "volta": {
+         "ent": 0.127,
+         "neu": 0.762,
+         "con": 0.111
+        }
+       },
+       {
+        "tese": "T61",
+        "cosseno": 0.062,
+        "ida": {
+         "ent": 0.066,
+         "neu": 0.889,
+         "con": 0.045
+        },
+        "volta": {
+         "ent": 0.079,
+         "neu": 0.867,
+         "con": 0.053
+        }
+       },
+       {
+        "tese": "T44",
+        "cosseno": 0.062,
+        "ida": {
+         "ent": 0.078,
+         "neu": 0.813,
+         "con": 0.109
+        },
+        "volta": {
+         "ent": 0.095,
+         "neu": 0.792,
+         "con": 0.113
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Coloque a massa numa forma untada e asse em forno médio por quarenta minutos.",
+      "decisao": "nada",
+      "tese": "T60",
+      "vizinhas": [
+       {
+        "tese": "T60",
+        "cosseno": 0.187,
+        "ida": {
+         "ent": 0.081,
+         "neu": 0.822,
+         "con": 0.097
+        },
+        "volta": {
+         "ent": 0.074,
+         "neu": 0.857,
+         "con": 0.07
+        }
+       },
+       {
+        "tese": "T44",
+        "cosseno": 0.089,
+        "ida": {
+         "ent": 0.052,
+         "neu": 0.86,
+         "con": 0.088
+        },
+        "volta": {
+         "ent": 0.113,
+         "neu": 0.773,
+         "con": 0.114
+        }
+       },
+       {
+        "tese": "T62",
+        "cosseno": 0.087,
+        "ida": {
+         "ent": 0.099,
+         "neu": 0.791,
+         "con": 0.11
+        },
+        "volta": {
+         "ent": 0.099,
+         "neu": 0.771,
+         "con": 0.13
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Espere esfriar antes de desenformar.",
+      "decisao": "concorda",
+      "grau": "parcial",
+      "tese": "T19",
+      "vizinhas": [
+       {
+        "tese": "T19",
+        "cosseno": 0.202,
+        "ida": {
+         "ent": 0.194,
+         "neu": 0.591,
+         "con": 0.214
+        },
+        "volta": {
+         "ent": 0.271,
+         "neu": 0.551,
+         "con": 0.178
+        }
+       },
+       {
+        "tese": "T26",
+        "cosseno": 0.171,
+        "ida": {
+         "ent": 0.052,
+         "neu": 0.839,
+         "con": 0.108
+        },
+        "volta": {
+         "ent": 0.183,
+         "neu": 0.656,
+         "con": 0.16
+        }
+       },
+       {
+        "tese": "T03",
+        "cosseno": 0.162,
+        "ida": {
+         "ent": 0.045,
+         "neu": 0.914,
+         "con": 0.041
+        },
+        "volta": {
+         "ent": 0.148,
+         "neu": 0.755,
+         "con": 0.096
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "bv3": {
+    "indice": 0,
+    "C": 0,
+    "N": 4,
+    "discordam": 0,
+    "frases": [
+     {
+      "frase": "Bata os ovos com o açúcar até formar um creme claro.",
+      "decisao": "nada",
+      "tese": "T31",
+      "valor": 0.233
+     },
+     {
+      "frase": "Junte a farinha peneirada e o leite aos poucos.",
+      "decisao": "nada",
+      "tese": "T55",
+      "valor": 0.205
+     },
+     {
+      "frase": "Coloque a massa numa forma untada e asse em forno médio por quarenta minutos.",
+      "decisao": "nada",
+      "tese": "T44",
+      "valor": 0.203
+     },
+     {
+      "frase": "Espere esfriar antes de desenformar.",
+      "decisao": "nada",
+      "tese": "T03",
+      "valor": 0.199
+     }
+    ]
+   }
+  },
+  {
+   "nome": "09-estado-contra-mercado",
+   "esperado": "alto",
+   "novo": {
+    "indice": 13,
+    "C": 0.5,
+    "N": 2,
+    "discordam": 0,
+    "frases": [
+     {
+      "frase": "O Estado não é um mero aparato burocrático, mas sim o principal instrumento de expressão da vontade coletiva e de garantia da dignidade humana.",
+      "decisao": "concorda",
+      "grau": "parcial",
+      "tese": "T18",
+      "vizinhas": [
+       {
+        "tese": "T18",
+        "cosseno": 0.767,
+        "ida": {
+         "ent": 0.236,
+         "neu": 0.684,
+         "con": 0.08
+        },
+        "volta": {
+         "ent": 0.13,
+         "neu": 0.792,
+         "con": 0.078
+        }
+       },
+       {
+        "tese": "T61",
+        "cosseno": 0.612,
+        "ida": {
+         "ent": 0.086,
+         "neu": 0.879,
+         "con": 0.036
+        },
+        "volta": {
+         "ent": 0.056,
+         "neu": 0.873,
+         "con": 0.072
+        }
+       },
+       {
+        "tese": "T48",
+        "cosseno": 0.54,
+        "ida": {
+         "ent": 0.179,
+         "neu": 0.674,
+         "con": 0.148
+        },
+        "volta": {
+         "ent": 0.051,
+         "neu": 0.889,
+         "con": 0.06
+        }
+       }
+      ]
+     },
+     {
+      "frase": "Em um mundo moldado pelas forças do mercado, onde a lógica do lucro frequentemente se sobrepõe às necessidades das pessoas, a ausência de um poder público forte resulta inevitavelmente no aprofundamento das desigualdades e na exclusão social dos mais vulneráveis.",
+      "decisao": "nada",
+      "tese": "T43",
+      "vizinhas": [
+       {
+        "tese": "T43",
+        "cosseno": 0.56,
+        "ida": {
+         "ent": 0.082,
+         "neu": 0.834,
+         "con": 0.084
+        },
+        "volta": {
+         "ent": 0.045,
+         "neu": 0.892,
+         "con": 0.064
+        }
+       },
+       {
+        "tese": "T64",
+        "cosseno": 0.549,
+        "ida": {
+         "ent": 0.073,
+         "neu": 0.877,
+         "con": 0.05
+        },
+        "volta": {
+         "ent": 0.034,
+         "neu": 0.912,
+         "con": 0.054
+        }
+       },
+       {
+        "tese": "T33",
+        "cosseno": 0.511,
+        "ida": {
+         "ent": 0.073,
+         "neu": 0.861,
+         "con": 0.066
+        },
+        "volta": {
+         "ent": 0.04,
+         "neu": 0.905,
+         "con": 0.056
+        }
+       }
+      ]
+     }
+    ]
+   },
+   "bv3": {
+    "indice": 50,
+    "C": 2,
+    "N": 2,
+    "discordam": 0,
+    "frases": [
+     {
+      "frase": "O Estado não é um mero aparato burocrático, mas sim o principal instrumento de expressão da vontade coletiva e de garantia da dignidade humana.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T11",
+      "valor": 0.616
+     },
+     {
+      "frase": "Em um mundo moldado pelas forças do mercado, onde a lógica do lucro frequentemente se sobrepõe às necessidades das pessoas, a ausência de um poder público forte resulta inevitavelmente no aprofundamento das desigualdades e na exclusão social dos mais vulneráveis.",
+      "decisao": "concorda",
+      "grau": "total",
+      "tese": "T51",
+      "valor": 0.614
+     }
+    ]
+   }
+  }
+ ]
+}

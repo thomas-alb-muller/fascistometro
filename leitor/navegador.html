@@ -1,0 +1,47 @@
+<!doctype html>
+<meta charset="utf-8">
+<title>Leitor no navegador</title>
+<pre id="saida">carregando…</pre>
+<script type="module">
+// Mede o leitor no navegador: transformers.js + ONNX Runtime em WebAssembly, uma linha de execução
+// (a página publicada não tem isolamento entre origens, então não usa várias linhas).
+import { env, pipeline, AutoTokenizer, AutoModelForSequenceClassification } from "./node_modules/@huggingface/transformers/dist/transformers.min.js";
+import { criarLeitor } from "./leitor.js";
+import { TESES } from "../provisorio/teses.js";
+const q = new URLSearchParams(location.search);
+const NLI = { minilm: "onnx-community/multilingual-MiniLMv2-L6-mnli-xnli-ONNX", mdeberta: "Xenova/mDeBERTa-v3-base-xnli-multilingual-nli-2mil7" }[q.get("nli") ?? "mdeberta"];
+const dtNli = q.get("dtype") ?? "fp16";
+env.localModelPath = "./modelos/";
+env.allowLocalModels = true;
+env.allowRemoteModels = false;
+env.useBrowserCache = false;
+env.backends.onnx.wasm.wasmPaths = new URL("./node_modules/onnxruntime-web/dist/", location.href).href;
+env.backends.onnx.wasm.numThreads = 1;
+const nomes = ["01-doutrina-literal", "02-outras-palavras", "03-negado", "04-aula-historia", "05-antifascista", "06-direitos-humanos", "07-militarista", "08-receita", "09-estado-contra-mercado"];
+const r = {};
+try {
+  let t = performance.now();
+  const extrator = await pipeline("feature-extraction", "Xenova/paraphrase-multilingual-MiniLM-L12-v2", { dtype: "q8", device: "wasm" });
+  const tok = await AutoTokenizer.from_pretrained(NLI);
+  const modelo = await AutoModelForSequenceClassification.from_pretrained(NLI, { dtype: dtNli, device: "wasm" });
+  r.cargaMs = Math.round(performance.now() - t);
+  const pos = Object.fromEntries(Object.entries(modelo.config.id2label).map(([i, x]) => [x.toLowerCase(), +i]));
+  let pares = 0, tNli = 0, tFrase = 0;
+  const embutir = async (lista) => { const t0 = performance.now(); const v = (await extrator(lista, { pooling: "mean", normalize: true })).tolist(); tFrase += performance.now() - t0; return v; };
+  const inferir = async (P, H) => {
+    const t0 = performance.now(); const out = [];
+    for (let i = 0; i < P.length; i += 8) {
+      const x = tok(P.slice(i, i + 8), { text_pair: H.slice(i, i + 8), padding: true, truncation: true });
+      for (const l of (await modelo(x)).logits.tolist()) { const m = Math.max(...l), e = l.map((v) => Math.exp(v - m)), s = e.reduce((a, b) => a + b); out.push({ ent: e[pos.entailment] / s, neu: e[pos.neutral] / s, con: e[pos.contradiction] / s }); }
+    }
+    pares += P.length; tNli += performance.now() - t0; return out;
+  };
+  const leitor = criarLeitor({ teses: TESES, embutir, inferir });
+  t = performance.now();
+  let frases = 0;
+  for (const n of nomes) { const texto = await (await fetch(`../prototipo/textos/${n}.txt`)).text(); frases += (await leitor.ler(texto)).filter((i) => !i.fora).length; }
+  Object.assign(r, { leituraMs: Math.round(performance.now() - t), frases, pares, msPorPar: Math.round(tNli / pares), msModeloFrase: Math.round(tFrase), memoriaMB: performance.memory ? Math.round(performance.memory.usedJSHeapSize / 1e6) : null });
+} catch (e) { r.erro = String(e?.stack ?? e); }
+document.getElementById("saida").textContent = JSON.stringify(r);
+window.resultado = r;
+</script>
